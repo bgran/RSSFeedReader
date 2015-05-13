@@ -1,3 +1,3 @@
-#11.05.2015: 1 hour in introductionary lecture.
-#12.05.2015: 1,5 hours at BK107 paja, working on setting up build environment for first deadline.
+* 11.05.2015: 1 hour in introductionary lecture.
+* 12.05.2015: 1,5 hours at BK107 paja, working on setting up build environment for first deadline.
 
