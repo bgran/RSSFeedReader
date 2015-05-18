@@ -4,6 +4,11 @@ import java.util.*;
 import rssfr.rssfeedreader.XMLElement.*;
 import rssfr.rssfeedreader.XMLMalformedExc.*;
 
+/** Description of Parser
+ * 
+ * @author bgran
+ * @version 0.1
+ */
 public class Parser {
 	protected String input;
 	private int pos;
@@ -14,14 +19,24 @@ public class Parser {
 	
 	private XMLElement rootElem;
 	
+        /** Description of Parser(String i)
+         * 
+         * @param XML document to parse.
+         */
 	public Parser(String i) {
 		this.input = i;
 		pos = 0;
 	}
+        /** Description of Parser() */
 	public Parser() {
 		pos = 0;
 		
 	}
+        
+        /** Description of pushData(String i)
+         * 
+         * @param i XML document to parse
+         */
 	public void pushData(String i) {
 		this.input = i;
 	}
@@ -38,7 +53,7 @@ public class Parser {
 	 * </document>
 	 */
 	
-	public XMLElement parseXML(String xml, XMLElement root) {
+	private XMLElement parseXML(String xml, XMLElement root) {
 		//Stack<XMLElement> st = new Stack<XMLElement>();
 		Stack st = new Stack();
                 
@@ -87,7 +102,7 @@ public class Parser {
 		return (root);
 	}
 	
-	public void recParse(String buf, XMLElement root) {
+        private void recParse(String buf, XMLElement root) {
 		/*
 		 * parseState gets the following values:
 		 *  0) we are in this stack frame for the first loops.

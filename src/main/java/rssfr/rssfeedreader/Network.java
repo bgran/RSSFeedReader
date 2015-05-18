@@ -8,10 +8,14 @@ import java.io.*;
 
 /**
  * @author bgran
- *
+ * @version 0.1
  */
 public class Network {
-
+        /** Description of getUrl(String url)
+         * 
+         * @param HTTP URL from which to get the RSS feed from.
+         * @return Returns a String containing the RSS feed form.
+         */
 	public static String getUrl(String url) {
 		try {
 			URL u = new URL(url);

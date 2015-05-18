@@ -25,9 +25,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 
-/**
+/** Descirption of GUI
+ * 
  * @author bgran
- *
+ * @version 0.1
  */
 public class GUI extends JFrame {
 	private JLabel label;
@@ -39,7 +40,7 @@ public class GUI extends JFrame {
 	//public GUI () {
 	//	initUi();
 	//}
-	public void swap() {
+	private void swap() {
 		if (state == 0) {
 			// We should hide the JList and show the JTextArea
 			System.out.println("Showing news_text");
@@ -52,7 +53,10 @@ public class GUI extends JFrame {
 		}
 		state = (state + 1) % 2;
 	}
-	public void initUi() {
+	/** Description of initUI.
+         * 
+         */
+        public void initUi() {
 		JPanel panel = new JPanel();
 		panel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 		panel.setLayout(new GridLayout(/* 2 */5, 4, 5, 5));
@@ -75,7 +79,4 @@ public class GUI extends JFrame {
         //setLocationRelativeTo(null);
 	}
 	
-	public void init (String[] args) {
-		
-	}
 }

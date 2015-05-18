@@ -5,13 +5,14 @@ package rssfr.rssfeedreader;
 
 import java.io.*;
 
-/**
+/** Description of FilePoll
  * @author bgran
- *
+ * @version 0.1
  */
 public class FilePoll {
 	private String file;
 	
+        /* FIXME: JavaDoc */
 	public FilePoll(String file) {
 		this.file = file;
 	}
@@ -32,6 +33,11 @@ public class FilePoll {
 		return (lines);
 	}
 	
+        /** Description of getContents()
+         * 
+         * @return A String array with contents of RSS file
+         */
+        /*
 	public String[] getContents() {
 		int fileLineCount = this.__countFileLines();
 		String[] rv = new String[fileLineCount];
@@ -54,8 +60,8 @@ public class FilePoll {
 			System.exit(1);
 		}
 		return (rv);
-	}
-
+	}*/
+        /*
 	public String getRaw() {
 		String rv = new String("");
 		try {
@@ -73,5 +79,5 @@ public class FilePoll {
 			System.exit(1);
 		}
 		return (rv);
-	}
+	}*/
 }

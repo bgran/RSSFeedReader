@@ -3,6 +3,10 @@ package rssfr.rssfeedreader;
 import java.util.*;
 import rssfr.rssfeedreader.Parser;
 
+/**
+ *
+ * @author bgran
+ */
 public class XMLElement  {
 	private String _elemName;
 	private String _elemVal;
