@@ -3,24 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package rssfr.rssfeedreader;
 
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import rssfr.rssfeedreader.XMLElement;
+import static org.junit.Assert.*;
 
 /**
  *
- * @author bgranlun
+ * @author bgran
  */
-public class XMLElementTest {
+public class CruftTest {
     
-    public XMLElementTest() {
+    public CruftTest() {
     }
     
     @BeforeClass
@@ -42,13 +40,21 @@ public class XMLElementTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    @Test
-    public void hello() {}
+    // @Test
+    // public void hello() {}
     
     @Test
-    public void testXMLinput() {
-        XMLElement xml = new XMLElement("document");
+    public void testFileRead() {
+        String file = new String("/etc/passwd");
+        String result = "bogus";
+        try {
+            result = Cruft.read_file(file);
+        } catch(Exception e) {
+            //System.out.println("getUrl failed");
+        }
+        boolean e = result.equals("bogus");
+        assertFalse(e);
         
-    
     }
+    
 }
