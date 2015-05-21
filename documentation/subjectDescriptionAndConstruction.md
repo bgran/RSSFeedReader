@@ -4,4 +4,6 @@ RSS is XML markup language, that is a complete XML document.
 
 The users for such an application is the web user who want's to stay up to date with current happenings on the Internet.
 
+The application de
+
 FIXME: better and more description and construction.

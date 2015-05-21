@@ -1,40 +1,36 @@
-/**
- * 
- */
 package rssfr.rssfeedreader;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
-import rssfr.rssfeedreader.FilePoll;
 import rssfr.rssfeedreader.Network;
-import rssfr.rssfeedreader.XMLElement;
 import rssfr.rssfeedreader.GUI;
+import rssfr.rssfeedreader.Cruft.*;
+import rssfr.rssfeedreader.ngXML;
+
 import javax.swing.*;
 
+
+
 /** Description of rssread
+ * Main class for application.
+ * 
  * @author bgran
- * @vesion 0.1
- * @param
+ * @version 0.1
  */
 public class rssread extends GUI {
 	//GUI gui;
 	JButton b;
-	
+        
 	/** Description of main()
          * 
 	 * @param args              Command-line arguments.
 	 */
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-                    public void run() {
-                        System.out.println("Kalaa----");
-                        rssread rss = new rssread();
-                        rss.setVisible(true);
-                    }
-                }
-            );
+            GUI.gui_hook();
 	}
 
         /** Description of rssread constructor.
@@ -45,13 +41,5 @@ public class rssread extends GUI {
 		System.out.println("rssread initializing");
 		initUi();
 	}
-	/*public String join(Collection<String[]> collection) {
-		StringBuffer buf = new StringBuffer();
-		Iterator<String[]> i = collection.iterator();
-		while (i.hasNext()) {
-			buf.append(i.next());
-		}
-		return buf.toString();
-	} */
         
 }

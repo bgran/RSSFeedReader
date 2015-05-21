@@ -58,4 +58,16 @@ public class NetworkTest {
         boolean e = result.equals("Salainen viesti");
         assertTrue(e);
     }
+    @Test
+    public void testNetworkFalse() {
+        String urli = new String("http://devnull.local/asdf");
+        String result = "bogus";
+        try {
+            result = Network.getUrl(urli);
+        } catch(Exception e) {
+            //System.out.println("getUrl failed");
+        }
+        boolean e = result.equals("bogus");
+        assertTrue(e);
+    }
 }
