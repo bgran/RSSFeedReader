@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rss version="0.91">
+  <channel>
+    <title>tonnikala.net: IT-uutiset</title>
+    <link>http://tonnikala.net/</link>
+    <description>Linux-, open source- ja muita IT-uutisia suomeksi</description>
+    <item>
+       <title>VALO-CD v4 - ilmaisia ja avoimia ohjelmia Windowsille</title>
+       <link>http://tonnikala.net/news.php?id=5252&amp;linked=rss09x</link>
+    </item>
+    <item>
+       <title>Uusi suomalainen kirjanpito-ohjelma Linuxille</title>
+       <link>http://tonnikala.net/news.php?id=5251&amp;linked=rss09x</link>
+    </item>
+    <item>
+       <title>Nokian Qt LGPL -lisenssin alle</title>
+       <link>http://tonnikala.net/news.php?id=5250&amp;linked=rss09x</link>
+    </item>
+    <item>
+       <title>Ikkunoita ja pingviinejä - Linux-käyttäjille kysely</title>
+       <link>http://tonnikala.net/news.php?id=5249&amp;linked=rss09x</link>
+    </item>
+    <item>
+       <title>Debian-projektissa kuohuu - sihteeri irtisanoutui</title>
+       <link>http://tonnikala.net/news.php?id=5248&amp;linked=rss09x</link>
+    </item>
+    <item>
+       <title>Vapaat ja Avoimen Lähdekoodin Ohjelmistot -CD v2 julkaistu</title>
+       <link>http://tonnikala.net/news.php?id=5247&amp;linked=rss09x</link>
+    </item>
+    <item>
+       <title>.FI-verkkotunnuksen saa jatkossa myös vuodeksi</title>
+       <link>http://tonnikala.net/news.php?id=5246&amp;linked=rss09x</link>
+    </item>
+    <item>
+       <title>Lenovon uutusläppärissä kaksi näyttöä</title>
+       <link>http://tonnikala.net/news.php?id=5245&amp;linked=rss09x</link>
+    </item>
+    <item>
+       <title>Theodore Ts&#39;o Linux Foundationin teknologiajohtajaksi</title>
+       <link>http://tonnikala.net/news.php?id=5244&amp;linked=rss09x</link>
+    </item>
+    <item>
+       <title>Open Source-keskus COSS täytti 5 v</title>
+       <link>http://tonnikala.net/news.php?id=5243&amp;linked=rss09x</link>
+    </item>
+  </channel>
+</rss>
