@@ -6,12 +6,15 @@
 
 package rssfr.rssfeedreader;
 
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import rssfr.rssfeedreader.Network;
 
 /**
@@ -22,6 +25,8 @@ public class NetworkTest {
     
     public NetworkTest() {
     }
+    //@Rule
+    public ExpectedException exception = ExpectedException.none();
     
     @BeforeClass
     public static void setUpClass() {
@@ -45,7 +50,7 @@ public class NetworkTest {
     @Test
     public void hello() {}
     
-    @Test
+    /*@Test
     public void testNetwork() {
         String urli = new String("http://sulaco.havoc.fi/bgran/jl/assertti.html");
         String result = "bogus";
@@ -57,8 +62,8 @@ public class NetworkTest {
         //String result = "Salainen viesti";
         boolean e = result.equals("Salainen viesti");
         assertTrue(e);
-    }
-    @Test
+    }*/
+    /*@Test
     public void testNetworkFalse() {
         String urli = new String("http://devnull.local/asdf");
         String result = "bogus";
@@ -69,5 +74,15 @@ public class NetworkTest {
         }
         boolean e = result.equals("bogus");
         assertTrue(e);
+    }*/
+    @Test(expected=MalformedNetwork.class)
+    public void testNetworkMalformed()  {
+        //String urli = "http://sulaco.havoc.fi/bgran/jl/malformed.xml";
+        exception.expect(MalformedNetwork.class);
+        String urli = "dsdfadfad";
+        Network netw = new Network();
+        netw.init_url_connection();
+        //netw.init_url_connection();
+        //netw.network_get_content();
     }
 }

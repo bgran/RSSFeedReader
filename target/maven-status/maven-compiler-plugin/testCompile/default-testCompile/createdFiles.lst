@@ -1,5 +1,6 @@
-FirstUnitTest.class
-rssfr/rssfeedreader/NetworkTest.class
 rssfr/rssfeedreader/GUITest.class
-rssfr/rssfeedreader/rssreaderTest.class
 ekatesti/SecondUnitTest.class
+rssfr/rssfeedreader/ngXMLElementTest.class
+rssfr/rssfeedreader/rssreaderTest.class
+FirstUnitTest.class
+rssfr/rssfeedreader/ngXMLTest.class

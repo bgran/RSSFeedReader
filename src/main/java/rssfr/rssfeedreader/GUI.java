@@ -46,6 +46,10 @@ import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.StyleContext;
 
 import rssfr.rssfeedreader.Cruft.*;
+import rssfr.rssfeedreader.MalformedNetwork;
+import rssfr.rssfeedreader.IOExcNetwork;
+import rssfr.rssfeedreader.Network;
+
 
 
 /** Descirption of GUI
@@ -55,6 +59,8 @@ import rssfr.rssfeedreader.Cruft.*;
  */
 public class GUI extends JFrame implements ActionListener,
 		ListSelectionListener {
+    
+        private Network network;
         private String text_content = "";
     
     
@@ -72,6 +78,11 @@ public class GUI extends JFrame implements ActionListener,
     	private JLabel prompt;
         
         public GUI() {
+                this.network = new Network();
+                //this.network.init_url_connection();
+                //this.network.init_io_connection();
+                
+                
 	        this.setLayout(new FlowLayout());
         	this.setPreferredSize(new Dimension(800, 600));
 
@@ -81,7 +92,7 @@ public class GUI extends JFrame implements ActionListener,
                             (int) ((double) 600)));
 
                 search_field = new JTextField(
-                        "http://sulaco.havoc.fi/bgran/jl/rss.xml", 60);
+                        this.network.getUrlStr(), 60);
                 search_field.setActionCommand("SearchCommand");
                 search_field.addActionListener(this);
                 search_button = new JButton("Search");
@@ -160,8 +171,12 @@ public class GUI extends JFrame implements ActionListener,
                 //archList();
                 String datat = "";
                 try {
-                    datat = Network.getUrl(search_word);
-                } catch(Exception err) {
+                    this.network.setUrlStr(search_word);
+                    this.network.init_url_connection();
+                    this.network.init_io_connection();
+                    
+                    datat = this.network.network_get_content();
+                } catch(Throwable err) {
                     Cruft.info_box(err.getMessage(), "Network error");
                     return;
                 }
@@ -233,5 +248,9 @@ public class GUI extends JFrame implements ActionListener,
         private void factoryNewRSSApp() {
                 my_app = new RSSApp();
         }
+
+    //private Network Network() {
+    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   // }
 
 }
