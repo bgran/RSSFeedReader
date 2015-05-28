@@ -62,31 +62,4 @@ public class Network {
                 throw new IOExcNetwork(e.toString());
             }
         }
-        
-/*        public String getUrl() throws MalformedNetwork, IOException, Throwable
-        {
-		try {
-			URL u = new URL(url);
-			URLConnection req = u.openConnection();
-			BufferedReader i = new BufferedReader(
-					new InputStreamReader(req.getInputStream()));
-			String rv = new String("");
-			String line;
-			while ((line = i.readLine()) != null) {
-				rv += line;
-			}
-			i.close();
-			return (rv);
-                        
-		} catch (MalformedURLException e) {
-                        throw new MalformedNetwork("Malformed URL");
-		} catch (IOException e) {
-                        throw new IOExcNetwork("IO Exception");
-		} catch (Throwable e) {
-                        throw new ErrorNetwork("Generic error");
-                }
-	}*/
-	
-	
-	
 }

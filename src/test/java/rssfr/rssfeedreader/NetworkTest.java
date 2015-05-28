@@ -50,38 +50,57 @@ public class NetworkTest {
     @Test
     public void hello() {}
     
-    /*@Test
+    @Test
     public void testNetwork() {
         String urli = new String("http://sulaco.havoc.fi/bgran/jl/assertti.html");
         String result = "bogus";
         try {
-            result = Network.getUrl(urli);
+            Network netw = new Network();
+            netw.setUrlStr(urli);
+            netw.init_url_connection();
+            netw.init_io_connection();
+            result = netw.network_get_content();
         } catch(Exception e) {
             System.out.println("getUrl failed");
         }
         //String result = "Salainen viesti";
         boolean e = result.equals("Salainen viesti");
         assertTrue(e);
-    }*/
-    /*@Test
+    }
+    @Test
     public void testNetworkFalse() {
         String urli = new String("http://devnull.local/asdf");
         String result = "bogus";
         try {
-            result = Network.getUrl(urli);
+            Network netw = new Network();
+            netw.setUrlStr(urli);
+            netw.init_url_connection();
+            netw.init_io_connection();
+            result = netw.network_get_content();
+
         } catch(Exception e) {
             //System.out.println("getUrl failed");
         }
         boolean e = result.equals("bogus");
         assertTrue(e);
-    }*/
-    @Test(expected=MalformedNetwork.class)
+    }
+    @Test //(expected=MalformedNetwork.class)
     public void testNetworkMalformed()  {
         //String urli = "http://sulaco.havoc.fi/bgran/jl/malformed.xml";
-        exception.expect(MalformedNetwork.class);
+        //exception.expect(MalformedNetwork.class);
+        boolean aok = false;
         String urli = "dsdfadfad";
         Network netw = new Network();
-        netw.init_url_connection();
+        netw.setUrlStr(urli);
+        try {
+            netw.init_url_connection();
+        } catch(MalformedNetwork e) {
+            aok = true;
+        } catch(Throwable e) {
+            System.out.println("EVIL");
+            
+        }
+        assertTrue(aok);
         //netw.init_url_connection();
         //netw.network_get_content();
     }
