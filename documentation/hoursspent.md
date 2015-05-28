@@ -6,3 +6,7 @@
 * 19.05.2015  2 hours spent at paja.
 * 20.05.2015  8 hours spent on software logic and ui, and three hours paja.
 * 21.05.2015  11 hours spent on tidying and debugging code and tests.
+* 26.05.2015  5 hours spent in paja and working at home.
+* 27.05.2015  9 hours spent at paja and at home
+* 28.05.2015  8 hours spent working on project at home.
+
