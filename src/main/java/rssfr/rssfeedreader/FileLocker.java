@@ -9,29 +9,31 @@ package rssfr.rssfeedreader;
  * This class doesn't do anything at the moment.
  */
 public class FileLocker {
-	final int max_number_of_stream = 100;
 
-	public String[] my_streams;
+    final int max_number_of_stream = 100;
 
-	FileLocker() {
-		my_streams = new String[100];
-		for (int i=0; i< 100; i++) {
-			my_streams[i] = null;
-		}
-	}
+    public String[] my_streams;
 
-	public void add_stream(String url) {
+    FileLocker() {
+        my_streams = new String[100];
+        for (int i = 0; i < 100; i++) {
+            my_streams[i] = null;
+        }
+    }
+
+    public void add_stream(String url) {
 		//Cruft.info_box(
-		//	"KAUIDIAD",
-		//	"SODKOPSDKPPOKSD");
-		int i;
-		for (i=0; my_streams[i] != null ; i++);
-		my_streams[i] = url;
-	}
-	public void repr() {
-		for (int i=0; i<my_streams.length; i++) {
-			System.out.println("" + i + " -> " + my_streams[i]);
-			
-		}
-	}
+        //	"KAUIDIAD",
+        //	"SODKOPSDKPPOKSD");
+        int i;
+        for (i = 0; my_streams[i] != null; i++);
+        my_streams[i] = url;
+    }
+
+    public void repr() {
+        for (int i = 0; i < my_streams.length; i++) {
+            System.out.println("" + i + " -> " + my_streams[i]);
+
+        }
+    }
 }

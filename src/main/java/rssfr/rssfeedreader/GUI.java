@@ -104,7 +104,7 @@ public class GUI extends JFrame implements ActionListener,
     private final int WINDOWWIDTH = (int) screenSize.getWidth();
     private final int WINDOWHEIGHT = (int) screenSize.getHeight() - 30;
 
-	//private DefaultListModel<String> listModel;
+    //private DefaultListModel<String> listModel;
     private FileLocker file_locker;
 
     final int W_WIDTH = 800;
@@ -116,7 +116,7 @@ public class GUI extends JFrame implements ActionListener,
      */
     public GUI() {
         this.network = new Network();
-		//this.network.init_url_connection();
+        //this.network.init_url_connection();
         //this.network.init_io_connection();
         file_locker = new FileLocker();
 
@@ -193,7 +193,7 @@ public class GUI extends JFrame implements ActionListener,
                             = (String) searchResults.getSelectedValue();
                     searchResults.setModel(listModel);
                     model.addElement(selectedItem);
-					//Cruft.info_box("selectedItem: "+selectedItem,
+                    //Cruft.info_box("selectedItem: "+selectedItem,
                     //	       "FOokalaa");
                     populate_view(selectedItem);
                 }
@@ -265,7 +265,7 @@ public class GUI extends JFrame implements ActionListener,
                 //listModel = new DefaultListModel();
                 break;
             case "RefreshFeeds":
-                        //
+                //
                 //
                 Cruft.info_box("RefreshFeeds", "Not implemented!");
                 break;

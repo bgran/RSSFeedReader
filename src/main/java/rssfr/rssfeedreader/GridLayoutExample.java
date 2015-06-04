@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-
 public class GridLayoutExample extends JFrame {
 
     public GridLayoutExample() {
@@ -29,13 +28,13 @@ public class GridLayoutExample extends JFrame {
             "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+"
         };
 
-
         for (int i = 0; i < buttons.length; i++) {
 
-            if (i == 2)
+            if (i == 2) {
                 panel.add(new JLabel(buttons[i]));
-            else
+            } else {
                 panel.add(new JButton(buttons[i]));
+            }
         }
 
         add(panel);

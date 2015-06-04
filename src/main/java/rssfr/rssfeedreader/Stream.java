@@ -13,51 +13,51 @@ import java.util.List;
  */
 public class Stream {
 
-	public Network netw = null;
-	public String rss_url = null;
+    public Network netw = null;
+    public String rss_url = null;
 
-	String [] vals = null;
+    String[] vals = null;
 
-	public String borken_interface() {
-		return (rss_url);
-	}
+    public String borken_interface() {
+        return (rss_url);
+    }
 
-	public Stream (String rss_url_) {
-		rss_url = rss_url_;
+    public Stream(String rss_url_) {
+        rss_url = rss_url_;
 
-		netw = new Network();
-	}
-	public void refresh_content () {
+        netw = new Network();
+    }
 
-		String new_data = get_HTTP_content();
+    public void refresh_content() {
 
-		
-	}
+        String new_data = get_HTTP_content();
 
-	public void setup_content() {
-		String data = get_HTTP_content();
-		List<ngXMLElement> vals = null;
+    }
 
-		try {
-			vals = ngXML.do_parse(data);
-		} catch (Exception err) {
-			Cruft.info_box("XML p broke: " + err.getMessage(),
-				       "XML error");
-			return;
-		}
-		
-	}
+    public void setup_content() {
+        String data = get_HTTP_content();
+        List<ngXMLElement> vals = null;
 
-	public String get_HTTP_content() {
-		this.netw.setUrlStr(rss_url);
-		try {
-			this.netw.init_url_connection();
-			this.netw.init_io_connection();
-			return this.netw.network_get_content();
-		} catch (Exception e) {
-			Cruft.info_box("Uhuhuh", rss_url);
-			return (null);
-		}
-	}
+        try {
+            vals = ngXML.do_parse(data);
+        } catch (Exception err) {
+            Cruft.info_box("XML p broke: " + err.getMessage(),
+                    "XML error");
+            return;
+        }
+
+    }
+
+    public String get_HTTP_content() {
+        this.netw.setUrlStr(rss_url);
+        try {
+            this.netw.init_url_connection();
+            this.netw.init_io_connection();
+            return this.netw.network_get_content();
+        } catch (Exception e) {
+            Cruft.info_box("Uhuhuh", rss_url);
+            return (null);
+        }
+    }
 
 }

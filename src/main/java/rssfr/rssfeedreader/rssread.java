@@ -13,33 +13,35 @@ import rssfr.rssfeedreader.ngXML;
 
 import javax.swing.*;
 
-
-
-/** Description of rssread
- * Main class for application.
- * 
+/**
+ * Description of rssread Main class for application. bgran1337
+ *
  * @author bgran
  * @version 0.1
  */
 public class rssread extends GUI {
-	//GUI gui;
-	JButton b;
-        
-	/** Description of main()
-         * 
-	 * @param args              Command-line arguments.
-	 */
-	public static void main(String[] args) {
-            GUI.gui_hook();
-	}
 
-        /** Description of rssread constructor.
-         * 
-         * 
-         */
-	public rssread() {
-		System.out.println("rssread initializing");
-		initUi();
-	}
-        
+    //GUI gui;
+
+    JButton b;
+
+    /**
+     * Description of main()
+     *
+     * @param args Command-line arguments.
+     */
+    public static void main(String[] args) {
+        GUI.gui_hook();
+    }
+
+    /**
+     * Description of rssread constructor.
+     *
+     *
+     */
+    public rssread() {
+        System.out.println("rssread initializing");
+        initUi();
+    }
+
 }
