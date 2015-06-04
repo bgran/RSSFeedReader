@@ -12,9 +12,10 @@ import javax.swing.SwingWorker;
  * @author bgran
  */
 public class RSSApp extends SwingWorker<Integer, String> {
-    public RSSApp () {
-    
-    }
+
+	public RSSApp () {
+		
+	}
 
     @Override
     protected Integer doInBackground() throws Exception {

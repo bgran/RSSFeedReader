@@ -18,43 +18,64 @@ import rssfr.rssfeedreader.Cruft.*;
 
 public class ngXML {
     public static List<ngXMLElement> parse2(String data) throws Exception {
-        List<ngXMLElement> rv = new ArrayList<ngXMLElement>();
-        
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        factory.setValidating(false);
-        DocumentBuilder builder = factory.newDocumentBuilder();
+	    List<ngXMLElement> rv = new ArrayList<ngXMLElement>();
 
-        InputSource is = new InputSource();
-        is.setCharacterStream(new StringReader(data));
-        Document doc = builder.parse(is);
-        Element rootElement = doc.getDocumentElement();
-        NodeList children = rootElement.getChildNodes();
-       
-        NodeList thekeys = doc.getElementsByTagName("title");
-        NodeList thevals = doc.getElementsByTagName("link");
-        
-        Node k1, k2;
-        
-        int parallel_len = thekeys.getLength();
-        for (int i = 0; i < parallel_len ; i++) {
-            k1 = thekeys.item(i);
-            k2 = thevals.item(i);
+	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	    factory.setValidating(false);
+	    DocumentBuilder builder = factory.newDocumentBuilder();
+
+	    InputSource is = new InputSource();
+	    is.setCharacterStream(new StringReader(data));
+	    Document doc = builder.parse(is);
+	    Element rootElement = doc.getDocumentElement();
+	    NodeList children = rootElement.getChildNodes();
+
+	    NodeList thekeys = doc.getElementsByTagName("title");
+	    NodeList thevals = doc.getElementsByTagName("link");
+
+	    Node k1, k2;
+
+	    int parallel_len = thekeys.getLength();
+	    int vals_len     = thevals.getLength();
+
+
+	    assert(parallel_len == vals_len);
+
+
+	    if (parallel_len != vals_len) {
+		    Cruft.info_box("Kaik on hajalla", "index: " + (parallel_len - vals_len));
+		    return null;
+	    }
+	    Cruft.info_box("kala: " + parallel_len, "parallel_len");
+	    for (int i = 0; i < vals_len ; i++) {
+		    Cruft.info_box("i="+i, "index");
+		    assert(i < parallel_len);
+		    k1 = thekeys.item(i);
+		    k2 = thevals.item(i);
             
-            String key = k1.getTextContent();
-            String val = k2.getTextContent();
-            
-            ngXMLElement elem = new ngXMLElement(key, val);
-            rv.add(elem);
-        }
-        
-        return rv;
+		    String key = k1.getTextContent();
+		    String val = k2.getTextContent();
+
+		    //Cruft.info_box("key", key);
+		    //Cruft.info_box("val", val);
+	    
+		    ngXMLElement elem = new ngXMLElement(key, val);
+		    rv.add(elem);
+	    }
+	    Cruft.info_box("parse2 return value: " + rv.size(), "BORK");
+	    return rv;
     }
     
     
     public static List<ngXMLElement> do_parse(String data) throws Exception {
-            List<ngXMLElement> tmp = new ArrayList<ngXMLElement>();
-            //List<String> conversion = new ArrayList<String>();
-            tmp = ngXML.parse2(data);
-            return (tmp);
+	    List<ngXMLElement> tmp = new ArrayList<ngXMLElement>();
+	    //List<String> conversion = new ArrayList<String>();
+	    try {
+		    tmp = ngXML.parse2(data);
+	    } catch (Exception e) {
+		    Cruft.info_box("ngXML.parse2", "Virhe: " + e.getMessage());
+		    //return null;
+	    }
+	    return (tmp);
     }
 }
