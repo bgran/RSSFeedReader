@@ -1,9 +1,5 @@
 package rssfr.rssfeedreader;
 
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,7 +7,14 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
@@ -19,30 +22,27 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import java.awt.Toolkit;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker.StateValue;
 import javax.swing.event.ListSelectionEvent;
@@ -52,8 +52,8 @@ import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.StyleContext;
 
 import rssfr.rssfeedreader.Cruft.*;
-import rssfr.rssfeedreader.MalformedNetwork;
 import rssfr.rssfeedreader.IOExcNetwork;
+import rssfr.rssfeedreader.MalformedNetwork;
 import rssfr.rssfeedreader.Network;
 
 /**
@@ -114,7 +114,8 @@ public class GUI extends JFrame implements ActionListener,
 	private FileLocker file_locker;
 
 
-
+        final int W_WIDTH = 800;
+        final int W_HEIGHT = 600;
 
         /**
          * The GUI konstruktor sets up the user interface and binds actions to
@@ -137,24 +138,26 @@ public class GUI extends JFrame implements ActionListener,
 
 		// JFramen tyyli ja koko
 		this.setLayout(new FlowLayout());
-		this.setPreferredSize(new Dimension(WINDOWWIDTH, WINDOWHEIGHT));
-
+		//this.setPreferredSize(new Dimension(WINDOWWIDTH, WINDOWHEIGHT));
+                this.setPreferredSize(new Dimension(W_WIDTH, W_HEIGHT));
 
 	JPanel panel2 = new JPanel(new BorderLayout());
-	panel2.setPreferredSize(new Dimension(WINDOWWIDTH - 30,
-					      (int) ((double) WINDOWHEIGHT / 1.1)));
+	panel2.setPreferredSize(new Dimension(W_WIDTH - 30,
+					      (int) ((double) W_HEIGHT / 1.1)));
 
 	JPanel panel3 = new JPanel(new BorderLayout());
-	panel3.setPreferredSize(new Dimension(WINDOWWIDTH - 30, 20));
+	panel3.setPreferredSize(new Dimension(W_WIDTH - 30, 20));
 
-	JPanel panel3SubPanel1 = new JPanel(new GridLayout(1, 2));
+        // bgran 2
+       	/*JPanel panel3SubPanel1 = new JPanel(new GridLayout(1, 2));
 	panel3SubPanel1.setPreferredSize(new Dimension(200, 20));
 
 	JPanel panel3SubPanel2 = new JPanel(new GridLayout(1, 4));
-	panel3SubPanel2.setPreferredSize(new Dimension((WINDOWWIDTH / 6) - 15, 20));
+	panel3SubPanel2.setPreferredSize(new Dimension((W_WIDTH / 6) - 15, 20));
 
 	JPanel panel3SubPanel21 = new JPanel(new GridBagLayout());
-	panel3SubPanel21.setPreferredSize(new Dimension((WINDOWWIDTH / 6) - 15, 20));
+	panel3SubPanel21.setPreferredSize(new Dimension((W_WIDTH / 6) - 15, 20));
+        */
 
 	
         searchField = new JTextField("http://sulaco.havoc.fi/bgran/jl/rss.xml", 60);
@@ -164,79 +167,67 @@ public class GUI extends JFrame implements ActionListener,
 	searchButton.setActionCommand("GetRSS");
 	searchButton.addActionListener(this);
 
+        
+        
 	// Valikon määrittely
 	menuBar = new JMenuBar();
-	menu = new JMenu("Valinnat");
+	//Build the first menu.
+        menu = new JMenu("A Menu");
+        menu.setMnemonic(KeyEvent.VK_A);
+        menu.getAccessibleContext().setAccessibleDescription(
+            "The only menu in this program that has menu items");
+        menuBar.add(menu);
 
-	// Valikkoryhmä
-	menuItem = getMenuItem("Valitse hakemisto", "AvaaHakemisto");
+        
+        
+        
+        
+        
+        
+        
+       	menuItem = getMenuItem("Refresh feeds", "RefreshFeeds");
 	menuItem.addActionListener(this);
 	menu.add(menuItem);
-
-	menuItem = getMenuItem("Ohjeet", "AvaaOhjeet");
+        menuItem = getMenuItem("Clear list", "ClearList");
 	menuItem.addActionListener(this);
 	menu.add(menuItem);
-
-	menuItem = getMenuItem("Sulje ohjelma", "SuljeOhjelma");
+        menu.addSeparator();
+        
+       	menuItem = getMenuItem("Exit", "Exit");
 	menuItem.addActionListener(this);
 	menu.add(menuItem);
-
+       
+        
+        
+        
 	menu.addActionListener(this);
-
+       
 	menuBar.add(menu);
-	menuBar.add(searchField);
+        menuBar.add(searchField);
 	menuBar.add(searchButton, BorderLayout.EAST);
 
+        
 	this.setJMenuBar(menuBar);
 
-	//filesScannedLabelQty = new JLabel("0");
-	//filesScannedLabel = new JLabel(" / ");
-	//fileCount = new JLabel("0");
-
-
-
-
-	//panel3SubPanel21.add(filesScannedLabelQty);
-	//panel3SubPanel21.add(filesScannedLabel);
-
-	//panel3SubPanel21.add(fileCount);
-	//panel3SubPanel2.add(panel3SubPanel21);
-	//panel3SubPanel2.add(progressBar);
-
-	panel3.add(panel3SubPanel1, BorderLayout.WEST);
-	panel3.add(panel3SubPanel2, BorderLayout.EAST);
-
-
-	//wordsScannedLabelQty = new JLabel("0");
-	//panel3SubPanel1.add(wordsScannedLabelQty);
-
+	
+        
 	searchResults = new JList();
 	searchResults.setBackground(Color.white);
-	searchResults.setSize(new Dimension(WINDOWWIDTH - 30,
-                (int) ((double) WINDOWHEIGHT / 2) - 30));
+	searchResults.setSize(new Dimension(W_WIDTH - 30,
+                (int) ((double) W_HEIGHT / 2) - 30));
 	searchResults.addListSelectionListener(this);
 
 	fileViewer = new JTextPane();
 	fileViewer.setEditable(false);
         fileViewer.setBackground(Color.white);
-	fileViewer.setSize(new Dimension(WINDOWWIDTH - 30,
-					 (int) ((double) WINDOWHEIGHT / 2) - 30));
+	fileViewer.setSize(new Dimension(W_WIDTH - 30,
+					 (int) ((double) W_HEIGHT / 2) - 30));
 	
 	panel2.add(new JScrollPane(searchResults), BorderLayout.NORTH);
 	panel2.add(new JScrollPane(fileViewer), BorderLayout.CENTER);
 
 	this.add(panel2);
 	this.add(panel3);
-
-
-
-
-
-
-
-
-
-
 
 
 	MouseListener mouseListener = new MouseAdapter() {
@@ -246,17 +237,13 @@ public class GUI extends JFrame implements ActionListener,
 						(String) searchResults.getSelectedValue();
 					searchResults.setModel(listModel);
 					model.addElement(selectedItem);
-					Cruft.info_box("selectedItem: "+selectedItem,
-						       "FOokalaa");
+					//Cruft.info_box("selectedItem: "+selectedItem,
+					//	       "FOokalaa");
 					populate_view(selectedItem);
 				}
 			}
 		};
 	searchResults.addMouseListener(mouseListener);
-
-
-
-
 
 	factoryNewRSSApp();
 	my_app.execute();
@@ -327,6 +314,17 @@ public class GUI extends JFrame implements ActionListener,
 			refresh_RSS_list();
 			//listModel = new DefaultListModel();
 			break;
+                case "RefreshFeeds":
+                        //
+                        //
+                        Cruft.info_box("RefreshFeeds", "Not implemented!");
+                        break;
+                case "Exit":
+                        System.exit(0);
+                        break;
+                case "ClearList":
+                        Cruft.info_box("Clears the feed list!", "Not implemented!");
+                        break;
 		case "OpenHelp":
 			about_window();
 			break;
@@ -408,10 +406,10 @@ public class GUI extends JFrame implements ActionListener,
     // }
 
 	public JMenuItem getMenuItem(String text, String actionCommand) {
-
+                
 		JMenuItem menuItem = new JMenuItem(text);
 		menuItem.setActionCommand(actionCommand);
-
+                //Cruft.info_box("getMenuItem " + text + " " + actionCommand, text);
 
 		return menuItem;
 	}

@@ -21,9 +21,9 @@ public class FileLocker {
 	}
 
 	public void add_stream(String url) {
-		Cruft.info_box(
-			"KAUIDIAD",
-			"SODKOPSDKPPOKSD");
+		//Cruft.info_box(
+		//	"KAUIDIAD",
+		//	"SODKOPSDKPPOKSD");
 		int i;
 		for (i=0; my_streams[i] != null ; i++);
 		my_streams[i] = url;

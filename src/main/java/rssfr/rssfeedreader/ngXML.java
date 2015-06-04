@@ -43,12 +43,12 @@ public class ngXML {
 
 
 	    if (parallel_len != vals_len) {
-		    Cruft.info_box("Kaik on hajalla", "index: " + (parallel_len - vals_len));
+		    //Cruft.info_box("Kaik on hajalla", "index: " + (parallel_len - vals_len));
 		    return null;
 	    }
-	    Cruft.info_box("kala: " + parallel_len, "parallel_len");
+	    //Cruft.info_box("kala: " + parallel_len, "parallel_len");
 	    for (int i = 0; i < vals_len ; i++) {
-		    Cruft.info_box("i="+i, "index");
+		    //Cruft.info_box("i="+i, "index");
 		    assert(i < parallel_len);
 		    k1 = thekeys.item(i);
 		    k2 = thevals.item(i);
@@ -62,7 +62,7 @@ public class ngXML {
 		    ngXMLElement elem = new ngXMLElement(key, val);
 		    rv.add(elem);
 	    }
-	    Cruft.info_box("parse2 return value: " + rv.size(), "BORK");
+	    //Cruft.info_box("parse2 return value: " + rv.size(), "BORK");
 	    return rv;
     }
     
@@ -73,7 +73,7 @@ public class ngXML {
 	    try {
 		    tmp = ngXML.parse2(data);
 	    } catch (Exception e) {
-		    Cruft.info_box("ngXML.parse2", "Virhe: " + e.getMessage());
+		    Cruft.info_box("ngXML.parse2", "Error: " + e.getMessage());
 		    //return null;
 	    }
 	    return (tmp);
