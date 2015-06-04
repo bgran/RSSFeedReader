@@ -1,6 +1,6 @@
 package rssfr.rssfeedreader;
 
-import GUI.UICruft;
+import rssfr.GUI.UICruft;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;

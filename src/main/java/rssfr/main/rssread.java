@@ -1,4 +1,4 @@
-package main;
+package rssfr.main;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import rssfr.rssfeedreader.Network;
-import GUI.GUI;
+import rssfr.GUI.GUI;
 import rssfr.rssfeedreader.Cruft.*;
 import rssfr.rssfeedreader.ngXML;
 
