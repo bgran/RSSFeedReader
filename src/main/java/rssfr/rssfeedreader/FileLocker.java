@@ -22,18 +22,9 @@ public class FileLocker {
     }
 
     public void add_stream(String url) {
-		//Cruft.info_box(
-        //	"KAUIDIAD",
-        //	"SODKOPSDKPPOKSD");
         int i;
         for (i = 0; my_streams[i] != null; i++);
         my_streams[i] = url;
     }
 
-    public void repr() {
-        for (int i = 0; i < my_streams.length; i++) {
-            System.out.println("" + i + " -> " + my_streams[i]);
-
-        }
-    }
 }

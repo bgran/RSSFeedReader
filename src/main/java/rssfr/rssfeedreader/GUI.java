@@ -118,7 +118,7 @@ public class GUI extends JFrame implements ActionListener,
         this.network = new Network();
         //this.network.init_url_connection();
         //this.network.init_io_connection();
-        file_locker = new FileLocker();
+	file_locker = new FileLocker();
 
         // JFramen tyyli ja koko
         this.setLayout(new FlowLayout());
@@ -259,7 +259,7 @@ public class GUI extends JFrame implements ActionListener,
         switch (e.getActionCommand()) {
             case "GetRSS":
                 String search_word = searchField.getText();
-                file_locker.add_stream(search_word);
+		file_locker.add_stream(search_word);
 
                 refresh_RSS_list();
                 //listModel = new DefaultListModel();
