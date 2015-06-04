@@ -5,6 +5,7 @@
  */
 package rssfr.rssfeedreader;
 
+import GUI.UICruft;
 import java.util.List;
 
 /**
@@ -41,7 +42,7 @@ public class Stream {
         try {
             vals = ngXML.do_parse(data);
         } catch (Exception err) {
-            Cruft.info_box("XML p broke: " + err.getMessage(),
+            UICruft.info_box("XML p broke: " + err.getMessage(),
                     "XML error");
             return;
         }
@@ -55,7 +56,7 @@ public class Stream {
             this.netw.init_io_connection();
             return this.netw.network_get_content();
         } catch (Exception e) {
-            Cruft.info_box("Uhuhuh", rss_url);
+            UICruft.info_box("Uhuhuh", rss_url);
             return (null);
         }
     }

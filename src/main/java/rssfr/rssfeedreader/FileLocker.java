@@ -14,11 +14,11 @@ public class FileLocker {
 
     public String[] my_streams;
 
-    FileLocker() {
+    public FileLocker() {
         my_streams = new String[100];
-        for (int i = 0; i < 100; i++) {
-            my_streams[i] = null;
-        }
+	for (int i = 0; i < 100; i++) {
+	    my_streams[i] = null;
+	}
     }
 
     public void add_stream(String url) {

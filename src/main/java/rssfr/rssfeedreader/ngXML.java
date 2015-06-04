@@ -1,5 +1,6 @@
 package rssfr.rssfeedreader;
 
+import GUI.UICruft;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import rssfr.rssfeedreader.Cruft.*;
 
 public class ngXML {
 
-    public static List<ngXMLElement> parse2(String data) throws Exception {
+    private static List<ngXMLElement> parse2(String data) throws Exception {
         List<ngXMLElement> rv = new ArrayList<ngXMLElement>();
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -71,7 +72,7 @@ public class ngXML {
         try {
             tmp = ngXML.parse2(data);
         } catch (Exception e) {
-            Cruft.info_box("ngXML.parse2", "Error: " + e.getMessage());
+            UICruft.info_box("ngXML.parse2", "Error: " + e.getMessage());
             //return null;
         }
         return (tmp);

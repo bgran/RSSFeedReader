@@ -18,10 +18,6 @@ public class Cruft {
      * @param info_msg string A messasge to show
      * @param title string A title to show.
      */
-    public static void info_box(String info_msg, String title) {
-        JOptionPane.showMessageDialog(null, info_msg,
-                "InfoBox: " + title, JOptionPane.INFORMATION_MESSAGE);
-    }
 
     /**
      * Reads file contents in a very inefficient manner.
