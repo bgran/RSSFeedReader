@@ -57,10 +57,7 @@ import rssfr.rssfeedreader.IOExcNetwork;
 import rssfr.rssfeedreader.Network;
 
 /**
- * Descirption of GUI
- *
- * @author bgran
- * @version 0.1
+ * GUI is the central class to handle graphics user interfaces.
  */
 public class GUI extends JFrame implements ActionListener,
 				ListSelectionListener {
@@ -119,7 +116,10 @@ public class GUI extends JFrame implements ActionListener,
 
 
 
-
+        /**
+         * The GUI konstruktor sets up the user interface and binds actions to
+         * the event handler.
+         */
 	public GUI() {
 		this.network = new Network();
 		//this.network.init_url_connection();
@@ -140,15 +140,6 @@ public class GUI extends JFrame implements ActionListener,
 		this.setPreferredSize(new Dimension(WINDOWWIDTH, WINDOWHEIGHT));
 
 
-	/*
-         * Paneelit määritellään järjestyksessä ylhäältä alas.
-         *  - Paneeli 1 sisältää hakukentän ja hakunapin
-         *  - Paneeli 2 sisältää hakutuloslistauksen eli JListin sekä
-         *    teksitiedoston sisältöä näyttävän JTextArean
-         *  - Paneeli 3 sisältää tiedostojen läpikäyntiä indikoivan
-         *    edistymismittarin
-         */
-
 	JPanel panel2 = new JPanel(new BorderLayout());
 	panel2.setPreferredSize(new Dimension(WINDOWWIDTH - 30,
 					      (int) ((double) WINDOWHEIGHT / 1.1)));
@@ -165,8 +156,8 @@ public class GUI extends JFrame implements ActionListener,
 	JPanel panel3SubPanel21 = new JPanel(new GridBagLayout());
 	panel3SubPanel21.setPreferredSize(new Dimension((WINDOWWIDTH / 6) - 15, 20));
 
-	// Hakukenttä ja hakunappi. Molemmat voi
-	searchField = new JTextField("http://sulaco.havoc.fi/bgran/jl/rss.xml", 60);
+	
+        searchField = new JTextField("http://sulaco.havoc.fi/bgran/jl/rss.xml", 60);
 	searchField.setActionCommand("GetRSS");
 	searchField.addActionListener(this);
 	searchButton = new JButton("Get RSS");

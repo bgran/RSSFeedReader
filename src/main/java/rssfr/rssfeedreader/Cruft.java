@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-/** Description of Cruft class.
- *
- * @author bgran
+/** 
+ * This class provides general usable services for the rest of the source
+ * code package.
  */
 public class Cruft {
     /**
@@ -33,6 +33,12 @@ public class Cruft {
 	    return (content);
     }
 
+    /**
+     * Method expands the array provided with one cell.
+     * 
+     * @param myval The String[] that is expanded.
+     * @return A String[] that is a copy of the myval array plus one empty cell.
+     */
 	public static String[] expand_array_stream (String [] myval) {
 		String [] newArray = new String[myval.length + 1];
 		System.arraycopy(myval, 0, newArray, 0, myval.length);

@@ -6,8 +6,7 @@
 package rssfr.rssfeedreader;
 
 /**
- *
- * @author bgran
+ * This class doesn't do anything at the moment.
  */
 public class FileLocker {
 	final int max_number_of_stream = 100;
