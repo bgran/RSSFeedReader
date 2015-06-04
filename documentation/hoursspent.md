@@ -9,4 +9,6 @@
 * 26.05.2015  5 hours spent in paja and working at home.
 * 27.05.2015  9 hours spent at paja and at home
 * 28.05.2015  8 hours spent working on project at home.
-
+* 02.06.2015  5 hours spent working on code.
+* 03.06.2015  8 hours spend working on code.
+* 04.06.2015  9 hours spent working on tests and code.
