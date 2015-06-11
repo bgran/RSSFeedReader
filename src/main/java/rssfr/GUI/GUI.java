@@ -124,7 +124,7 @@ public class GUI extends JFrame implements ActionListener,
     final int W_HEIGHT = 600;
 
     /**
-     * The GUI konstruktor sets up the user interface and binds actions to the
+     * The GUI construktor sets up the user interface and binds actions to the
      * event handler.
      */
     public GUI() {
@@ -213,6 +213,7 @@ public class GUI extends JFrame implements ActionListener,
         listModel2 = new DefaultListModel();
         
         MouseListener mouseListener = new MouseAdapter() {
+            // XXX bgran JavaDocs
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     String selectedItem
@@ -256,6 +257,10 @@ public class GUI extends JFrame implements ActionListener,
         my_app.execute();
     }
 
+    /**
+     * Launch a new browser window.
+     * @param urli_ 
+     */
     private void launch_url(String urli_) {
         Network.open_browser(urli_);
     }
