@@ -1,10 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rssfr.rssfeedreader;
 
+/**
+ * This class is an exception to signal error conditions in the Network class.
+ *
+ * @author bgran
+ */
 public class MalformedNetwork extends Exception {
 
     final static public long serialVersionUID = 123;

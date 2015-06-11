@@ -22,7 +22,6 @@ import javax.swing.*;
 public class rssread extends GUI {
 
     //GUI gui;
-
     JButton b;
 
     /**
@@ -35,9 +34,7 @@ public class rssread extends GUI {
     }
 
     /**
-     * Description of rssread constructor.
-     *
-     *
+     * The ctor setups the interface to the program.
      */
     public rssread() {
         System.out.println("rssread initializing");

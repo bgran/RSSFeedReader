@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rssfr.rssfeedreader;
 
 /**
- * This class doesn't do anything at the moment.
+ * This class is a holder of some stream related data.
  */
 public class FileLocker {
 
@@ -16,20 +11,29 @@ public class FileLocker {
 
     public FileLocker() {
         my_streams = new String[max_number_of_stream];
-	for (int i = 0; i < max_number_of_stream; i++) {
-	    my_streams[i] = null;
-	}
+        for (int i = 0; i < max_number_of_stream; i++) {
+            my_streams[i] = null;
+        }
     }
 
+    /**
+     * add_stream adds a string to be shown in the upper pane.
+     *
+     * @param url The locator to be added.
+     */
     public void add_stream(String url) {
         int i;
         for (i = 0; my_streams[i] != null; i++);
         my_streams[i] = url;
     }
+
+    /**
+     * Clears all streams from being shown in the ui.
+     */
     public void clean_streams() {
-       	for (int i = 0; i < max_number_of_stream; i++) {
-	    my_streams[i] = null;
-	}
+        for (int i = 0; i < max_number_of_stream; i++) {
+            my_streams[i] = null;
+        }
     }
 
 }

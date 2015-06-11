@@ -8,6 +8,7 @@ package rssfr.rssfeedreader;
 import javax.swing.SwingWorker;
 
 /**
+ * This is the main app class for the rss feed reader. Doesn't do much yet.
  *
  * @author bgran
  */

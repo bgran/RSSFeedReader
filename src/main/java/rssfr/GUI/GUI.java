@@ -110,7 +110,7 @@ public class GUI extends JFrame implements ActionListener,
 
     final DefaultListModel model = new DefaultListModel();
     final DefaultListModel model2 = new DefaultListModel();
-    
+
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private final int WINDOWWIDTH = (int) screenSize.getWidth();
     private final int WINDOWHEIGHT = (int) screenSize.getHeight() - 30;
@@ -119,7 +119,7 @@ public class GUI extends JFrame implements ActionListener,
     private FileLocker file_locker;
 
     private StyledDocument gdoc;
-    
+
     final int W_WIDTH = 800;
     final int W_HEIGHT = 600;
 
@@ -131,14 +131,14 @@ public class GUI extends JFrame implements ActionListener,
         this.network = new Network();
         //this.network.init_url_connection();
         //this.network.init_io_connection();
-	file_locker = new FileLocker();
+        file_locker = new FileLocker();
 
         // JFramen tyyli ja koko
         this.setLayout(new FlowLayout());
         //this.setPreferredSize(new Dimension(WINDOWWIDTH, WINDOWHEIGHT));
         this.setPreferredSize(new Dimension(W_WIDTH, W_HEIGHT));
 
-	MyJPanel panel2 = new MyJPanel(new BorderLayout());
+        MyJPanel panel2 = new MyJPanel(new BorderLayout());
         panel2.setPreferredSize(new Dimension(W_WIDTH - 30,
                 (int) ((double) W_HEIGHT / 1.1)));
 
@@ -188,22 +188,19 @@ public class GUI extends JFrame implements ActionListener,
         searchResults.addListSelectionListener(this);
 
         /*
-        fileViewer = new JTextPane();
-        fileViewer.setEditable(false);
-        fileViewer.setBackground(Color.green);
-        fileViewer.setSize(new Dimension(W_WIDTH - 30,
-                (int) ((double) W_HEIGHT / 2) - 30));
-        fileViewer.setText("HUAKIIII");
-        */
-        
+         fileViewer = new JTextPane();
+         fileViewer.setEditable(false);
+         fileViewer.setBackground(Color.green);
+         fileViewer.setSize(new Dimension(W_WIDTH - 30,
+         (int) ((double) W_HEIGHT / 2) - 30));
+         fileViewer.setText("HUAKIIII");
+         */
         linklist = new JList();
         linklist.setBackground(Color.green);
         linklist.setSize(new Dimension(W_WIDTH - 30,
                 (int) ((double) W_HEIGHT / 2) - 30));
         linklist.addListSelectionListener(this);
-        
-        
-        
+
         panel2.add(new JScrollPane(searchResults), BorderLayout.NORTH);
         panel2.add(new JScrollPane(linklist), BorderLayout.CENTER);
 
@@ -211,7 +208,7 @@ public class GUI extends JFrame implements ActionListener,
         this.add(panel3);
 
         listModel2 = new DefaultListModel();
-        
+
         MouseListener mouseListener = new MouseAdapter() {
             // XXX bgran JavaDocs
             public void mouseClicked(MouseEvent e) {
@@ -238,7 +235,7 @@ public class GUI extends JFrame implements ActionListener,
                     linklist.setModel(listModel2);
                     model.addElement(selectedItem);
                     //UICruft.info_box("selectedItem: "+selectedItem,
-                   // 	       "FOokalaa");
+                    // 	       "FOokalaa");
                     String urlpart = Cruft.extract_url(selectedItem);
                     UICruft.info_box("URLI: " + urlpart, "INFO");
                     launch_url(urlpart);
@@ -246,26 +243,25 @@ public class GUI extends JFrame implements ActionListener,
             }
         };
         linklist.addMouseListener(mouseListener2);
-        
-        
-        
-        
-        
-        
-        
+
         factoryNewRSSApp();
         my_app.execute();
     }
 
     /**
      * Launch a new browser window.
-     * @param urli_ 
+     *
+     * @param urli_ the URL of the site the browser opens.
      */
     private void launch_url(String urli_) {
         Network.open_browser(urli_);
     }
-    
-    
+
+    /**
+     * Populate the view with the RSS feed data.
+     *
+     * @param url The RSS feed to open.
+     */
     private void populate_view(String url) {
         Stream stream = new Stream(url);
         stream.setup_content();
@@ -275,6 +271,9 @@ public class GUI extends JFrame implements ActionListener,
         //fileViewer.setText(data);
     }
 
+    /**
+     * Setup the GUI.
+     */
     public static void gui_hook() /* throws .. */ {
         GUI gui_h = new GUI();
 
@@ -284,6 +283,9 @@ public class GUI extends JFrame implements ActionListener,
         gui_h.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * This method does parse XML data and push it into the listModel2 JList.
+     */
     private void feed_xml(String datat, String urli) {
         //UICruft.info_box("feed_xml: " + datat, "Error");
         List<ngXMLElement> vals = null;
@@ -300,16 +302,16 @@ public class GUI extends JFrame implements ActionListener,
         int len = vals.size();
         //UICruft.info_box("len: " + len, "tarkka");
         String t2[] = new String[len];
- 
+
         linklist.setModel(listModel2);
- 
+
         /// XXX bgran
         for (int i = 0; i < len; i++) {
             ngXMLElement t = vals.get(i);
             String key = t.getKey();
             String val = t.getVal();
             t2[i] = key + " -> " + val + "\n";
-            
+
             //panedata += t2[i];
             ///////////////linklist.addElement(key + " -> " + val + "\n");
             //try {
@@ -320,7 +322,7 @@ public class GUI extends JFrame implements ActionListener,
             listModel2.addElement(key + " -> " + val + "\n");
             //UICruft.info_box("feed_xml: " + key + " " + val,
             //        "Prkl");
-            
+
         }
         //linklist = new JList(t2);
         //fileViewer.setText(panedata);
@@ -335,7 +337,7 @@ public class GUI extends JFrame implements ActionListener,
         switch (e.getActionCommand()) {
             case "GetRSS":
                 String search_word = searchField.getText();
-		file_locker.add_stream(search_word);
+                file_locker.add_stream(search_word);
 
                 refresh_RSS_list();
                 //listModel = new DefaultListModel();
@@ -352,7 +354,7 @@ public class GUI extends JFrame implements ActionListener,
                 //UICruft.info_box("Clears the feed list!", "Not implemented!");
                 file_locker.clean_streams();
                 delete_RSS_list();
-                
+
                 break;
             case "OpenHelp":
                 about_window();
@@ -361,16 +363,22 @@ public class GUI extends JFrame implements ActionListener,
         this.repaint();
     }
 
+    /**
+     * Show an info box about the software.
+     */
     private void about_window() {
         UICruft.info_box("RSS Reader by Bo Granlund", "About");
     }
 
+    /**
+     * Adds items to the upper pane from file_locker.
+     */
     public void refresh_RSS_list() {
         listModel = new DefaultListModel();
         searchResults.setModel(listModel);
         String[] streams = file_locker.my_streams;
         //Cruft.info_box(""+streams.length, "HAKALAA");
-        for (int i = 0; i < streams.length-1; i++) {
+        for (int i = 0; i < streams.length - 1; i++) {
             if (streams[i] == null) {
                 continue;
             }
@@ -381,12 +389,16 @@ public class GUI extends JFrame implements ActionListener,
                     streams[i]);
         }
     }
+
+    /**
+     * Clear the lower pane, and load it with new data.
+     */
     public void refresh_link_list() {
         listModel2 = new DefaultListModel();
         linklist.setModel(listModel2);
         String[] streams = file_locker.my_streams;
         //Cruft.info_box(""+streams.length, "HAKALAA");
-        for (int i = 0; i < streams.length-1; i++) {
+        for (int i = 0; i < streams.length - 1; i++) {
             if (streams[i] == null) {
                 continue;
             }
@@ -397,12 +409,14 @@ public class GUI extends JFrame implements ActionListener,
                     streams[i]);
         }
     }
-    
-    
+
+    /**
+     * Clears the upper pane from feeds.
+     */
     public void delete_RSS_list() {
         listModel = new DefaultListModel();
         searchResults.setModel(listModel);
-        for (int i = 0; i<file_locker.my_streams.length-1; i++) {
+        for (int i = 0; i < file_locker.my_streams.length - 1; i++) {
             //listModel.clear();
             listModel.remove(i);
         }
@@ -430,7 +444,7 @@ public class GUI extends JFrame implements ActionListener,
     }
 
     /**
-     * Description of initUI.
+     * initUIi sets upt he basic user interface.
      *
      */
     public void initUi() {
@@ -454,13 +468,20 @@ public class GUI extends JFrame implements ActionListener,
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Factory method to create a new RSSApp instance.
+     */
     private void factoryNewRSSApp() {
         my_app = new RSSApp();
     }
 
-    //private Network Network() {
-    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    // }
+    /**
+     * Get's a new JMenuItem for the menu.
+     *
+     * @param text The name of the JMenuItem
+     * @param actionCommand the action bound to the menu item.
+     * @return a new JMenuItem
+     */
     public JMenuItem getMenuItem(String text, String actionCommand) {
 
         JMenuItem menuItem = new JMenuItem(text);

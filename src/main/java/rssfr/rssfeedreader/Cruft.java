@@ -12,14 +12,6 @@ import java.nio.file.Paths;
 public class Cruft {
 
     /**
-     * Pushes up an JOptionPane modal (?) dialog to report about happpenings in
-     * the appplication logic.
-     *
-     * @param info_msg string A messasge to show
-     * @param title string A title to show.
-     */
-
-    /**
      * Reads file contents in a very inefficient manner.
      *
      * @param file_name The name of the file we want to read.

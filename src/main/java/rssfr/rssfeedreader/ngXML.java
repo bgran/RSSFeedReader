@@ -18,8 +18,17 @@ import org.xml.sax.InputSource;
 import rssfr.rssfeedreader.ngXMLElement.*;
 import rssfr.rssfeedreader.Cruft.*;
 
+/**
+ * This is a rudimentary class to parse XML documents.
+ */
 public class ngXML {
 
+    /**
+     * This is the internal representation of the parser.
+     *
+     * @throws java.lang.Exception For broken input.
+     * @return A list of ngXMLElements.
+     */
     private static List<ngXMLElement> parse2(String data) throws Exception {
         List<ngXMLElement> rv = new ArrayList<ngXMLElement>();
 
@@ -57,7 +66,7 @@ public class ngXML {
             String key = k1.getTextContent();
             String val = k2.getTextContent();
 
-		    //Cruft.info_box("key", key);
+            //Cruft.info_box("key", key);
             //Cruft.info_box("val", val);
             ngXMLElement elem = new ngXMLElement(key, val);
             rv.add(elem);
@@ -66,6 +75,13 @@ public class ngXML {
         return rv;
     }
 
+    /**
+     * This method parses the argument to a internal representation.
+     *
+     * @param data the XML data to parse.
+     * @throws java.lang.Exception For internal error.
+     * @return A list of ngXMLElement's.
+     */
     public static List<ngXMLElement> do_parse(String data) throws Exception {
         List<ngXMLElement> tmp = new ArrayList<ngXMLElement>();
         //List<String> conversion = new ArrayList<String>();

@@ -13,6 +13,8 @@ import rssfr.GUI.UICruft;
 import rssfr.rssfeedreader.ErrorNetwork;
 
 /**
+ * This class implements network related functionality.
+ *
  * @author bgran
  * @version 0.1
  */
@@ -23,13 +25,6 @@ public class Network {
     private URL url;
     private BufferedReader input_reader;
 
-    /**
-     * Description of getUrl(String url)
-     *
-     * @param url The URL we want to fetch.
-     * @return Returns a String containing the RSS feed form.
-     * @throws ErrorNetwork In case of errors.
-     */
     public Network() {
     }
 
@@ -41,6 +36,11 @@ public class Network {
         return (this.urli);
     }
 
+    /**
+     * Setup a URL connection.
+     *
+     * @throws MalformedNetwork URL malformed
+     */
     public void init_url_connection() throws MalformedNetwork {
         try {
             this.url = new URL(this.urli);
@@ -49,6 +49,11 @@ public class Network {
         }
     }
 
+    /**
+     * Initialize I/O functionality.
+     *
+     * @throws IOExcNetwork I/O Exception
+     */
     public void init_io_connection() throws IOExcNetwork {
         try {
             URLConnection req = this.url.openConnection();
@@ -59,6 +64,12 @@ public class Network {
         }
     }
 
+    /**
+     * Fetch the data from the server and return it.
+     *
+     * @throws IOExcNetwork I/O Exception.
+     * @return The XML document.
+     */
     public String network_get_content() throws IOExcNetwork {
         try {
             String rv = "";
@@ -72,9 +83,9 @@ public class Network {
             throw new IOExcNetwork(e.toString());
         }
     }
-    
-    public static void open_browser(URI uri) {
-       Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+
+    private static void open_browser(URI uri) {
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
             try {
                 desktop.browse(uri);
@@ -84,13 +95,19 @@ public class Network {
         }
     }
 
-    public static void open_browser(URL url) {
+    private static void open_browser(URL url) {
         try {
             open_browser(url.toURI());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Open a browser window with the _url locator.
+     *
+     * @param _url The address to open the browser with.
+     */
     public static void open_browser(String _url) {
         try {
             URL tmpURL = new URL(_url);
