@@ -93,7 +93,7 @@ public class Network {
     }
     public static void open_browser(String _url) {
         try {
-            URL tmpURL = new URL("http://example.com/");
+            URL tmpURL = new URL(_url);
             open_browser(tmpURL);
         } catch (MalformedURLException e) {
             UICruft.info_box("Bogus url: " + _url, "ERROR");

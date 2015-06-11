@@ -220,8 +220,8 @@ public class GUI extends JFrame implements ActionListener,
                     searchResults.setModel(listModel);
                     linklist.setModel(listModel2);
                     model.addElement(selectedItem);
-                    UICruft.info_box("selectedItem: "+selectedItem,
-                    	       "FOokalaa");
+                    //UICruft.info_box("selectedItem: "+selectedItem,
+                    //	       "FOokalaa");
                     populate_view(selectedItem);
                 }
             }
@@ -236,11 +236,11 @@ public class GUI extends JFrame implements ActionListener,
                     //searchResults.setModel(listModel);
                     linklist.setModel(listModel2);
                     model.addElement(selectedItem);
-                    UICruft.info_box("selectedItem: "+selectedItem,
-                    	       "FOokalaa");
+                    //UICruft.info_box("selectedItem: "+selectedItem,
+                   // 	       "FOokalaa");
                     String urlpart = Cruft.extract_url(selectedItem);
                     UICruft.info_box("URLI: " + urlpart, "INFO");
-                    //launch_url(selectedItem);
+                    launch_url(urlpart);
                 }
             }
         };
@@ -280,7 +280,7 @@ public class GUI extends JFrame implements ActionListener,
     }
 
     private void feed_xml(String datat, String urli) {
-        UICruft.info_box("feed_xml: " + datat, "Error");
+        //UICruft.info_box("feed_xml: " + datat, "Error");
         List<ngXMLElement> vals = null;
         try {
             vals = ngXML.do_parse(datat);
@@ -293,7 +293,7 @@ public class GUI extends JFrame implements ActionListener,
             return;
         }
         int len = vals.size();
-        UICruft.info_box("len: " + len, "tarkka");
+        //UICruft.info_box("len: " + len, "tarkka");
         String t2[] = new String[len];
  
         linklist.setModel(listModel2);
