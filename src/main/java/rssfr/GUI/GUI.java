@@ -132,11 +132,11 @@ public class GUI extends JFrame implements ActionListener,
         //this.setPreferredSize(new Dimension(WINDOWWIDTH, WINDOWHEIGHT));
         this.setPreferredSize(new Dimension(W_WIDTH, W_HEIGHT));
 
-        JPanel panel2 = new JPanel(new BorderLayout());
+	MyJPanel panel2 = new MyJPanel(new BorderLayout());
         panel2.setPreferredSize(new Dimension(W_WIDTH - 30,
                 (int) ((double) W_HEIGHT / 1.1)));
 
-        JPanel panel3 = new JPanel(new BorderLayout());
+        MyJPanel panel3 = new MyJPanel(new BorderLayout());
         panel3.setPreferredSize(new Dimension(W_WIDTH - 30, 20));
 
         searchField = new JTextField("http://sulaco.havoc.fi/bgran/jl/rss.xml", 60);
@@ -335,7 +335,7 @@ public class GUI extends JFrame implements ActionListener,
      *
      */
     public void initUi() {
-        JPanel panel = new JPanel();
+        MyJPanel panel = new MyJPanel();
         panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         panel.setLayout(new GridLayout(5, 4, 5, 5));
 
