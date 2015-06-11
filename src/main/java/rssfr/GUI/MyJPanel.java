@@ -5,6 +5,8 @@
  */
 package rssfr.GUI;
 
+import java.awt.BorderLayout;
+import java.awt.LayoutManager;
 import javax.swing.JPanel;
 
 /**
@@ -12,5 +14,10 @@ import javax.swing.JPanel;
  * @author bgran
  */
 public class MyJPanel extends JPanel {
-    int foo();s
+    public MyJPanel() {
+        super();
+    }
+    public MyJPanel(LayoutManager layt) {
+        super(layt);
+    }
 }

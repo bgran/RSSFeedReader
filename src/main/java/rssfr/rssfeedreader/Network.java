@@ -3,10 +3,12 @@
  */
 package rssfr.rssfeedreader;
 
-import java.net.*;
+import java.awt.Desktop;
 import java.io.*;
+import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import rssfr.GUI.UICruft;
 
 import rssfr.rssfeedreader.ErrorNetwork;
 
@@ -68,6 +70,33 @@ public class Network {
             return (rv);
         } catch (IOException e) {
             throw new IOExcNetwork(e.toString());
+        }
+    }
+    
+    public static void open_browser(URI uri) {
+       Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void open_browser(URL url) {
+        try {
+            open_browser(url.toURI());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void open_browser(String _url) {
+        try {
+            URL tmpURL = new URL("http://example.com/");
+            open_browser(tmpURL);
+        } catch (MalformedURLException e) {
+            UICruft.info_box("Bogus url: " + _url, "ERROR");
         }
     }
 }

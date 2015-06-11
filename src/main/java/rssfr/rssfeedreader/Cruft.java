@@ -31,4 +31,9 @@ public class Cruft {
         return (content);
     }
 
+    public static String extract_url (String entry) {
+        String[] parts = entry.split(" -> ");
+        String part2 = parts[1];
+        return (part2);
+    }
 }

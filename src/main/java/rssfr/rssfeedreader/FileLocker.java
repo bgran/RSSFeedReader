@@ -15,8 +15,8 @@ public class FileLocker {
     public String[] my_streams;
 
     public FileLocker() {
-        my_streams = new String[100];
-	for (int i = 0; i < 100; i++) {
+        my_streams = new String[max_number_of_stream];
+	for (int i = 0; i < max_number_of_stream; i++) {
 	    my_streams[i] = null;
 	}
     }
@@ -25,6 +25,11 @@ public class FileLocker {
         int i;
         for (i = 0; my_streams[i] != null; i++);
         my_streams[i] = url;
+    }
+    public void clean_streams() {
+       	for (int i = 0; i < max_number_of_stream; i++) {
+	    my_streams[i] = null;
+	}
     }
 
 }

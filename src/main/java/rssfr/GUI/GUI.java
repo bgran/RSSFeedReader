@@ -51,6 +51,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.StyleContext;
 import rssfr.rssfeedreader.Cruft;
+import javax.swing.text.StyledDocument;
 
 import rssfr.rssfeedreader.Cruft.*;
 import rssfr.rssfeedreader.FileLocker;
@@ -92,21 +93,24 @@ public class GUI extends JFrame implements ActionListener,
     private JProgressBar progressBar;
     private JButton searchButton, selectDirButton;
     private JTextField searchField;
-    private JTextPane fileViewer;
+    //private JTextPane fileViewer;
     private JMenuItem menuItem;
     private JRadioButtonMenuItem rbMenuItem;
     private JCheckBoxMenuItem cbMenuItem;
     private DefaultListModel<String> listModel;
+    private DefaultListModel<String> listModel2;
     //private Vector<FileSummary> tempList;
     private String searchWord;
 
     JList searchResults;
+    JList linklist;
 
     private JSplitPane splitPane;
     //private String[] links =
 
     final DefaultListModel model = new DefaultListModel();
-
+    final DefaultListModel model2 = new DefaultListModel();
+    
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private final int WINDOWWIDTH = (int) screenSize.getWidth();
     private final int WINDOWHEIGHT = (int) screenSize.getHeight() - 30;
@@ -114,6 +118,8 @@ public class GUI extends JFrame implements ActionListener,
     //private DefaultListModel<String> listModel;
     private FileLocker file_locker;
 
+    private StyledDocument gdoc;
+    
     final int W_WIDTH = 800;
     final int W_HEIGHT = 600;
 
@@ -181,42 +187,87 @@ public class GUI extends JFrame implements ActionListener,
                 (int) ((double) W_HEIGHT / 2) - 30));
         searchResults.addListSelectionListener(this);
 
+        /*
         fileViewer = new JTextPane();
         fileViewer.setEditable(false);
-        fileViewer.setBackground(Color.white);
+        fileViewer.setBackground(Color.green);
         fileViewer.setSize(new Dimension(W_WIDTH - 30,
                 (int) ((double) W_HEIGHT / 2) - 30));
-
+        fileViewer.setText("HUAKIIII");
+        */
+        
+        linklist = new JList();
+        linklist.setBackground(Color.green);
+        linklist.setSize(new Dimension(W_WIDTH - 30,
+                (int) ((double) W_HEIGHT / 2) - 30));
+        linklist.addListSelectionListener(this);
+        
+        
+        
         panel2.add(new JScrollPane(searchResults), BorderLayout.NORTH);
-        panel2.add(new JScrollPane(fileViewer), BorderLayout.CENTER);
+        panel2.add(new JScrollPane(linklist), BorderLayout.CENTER);
 
         this.add(panel2);
         this.add(panel3);
 
+        listModel2 = new DefaultListModel();
+        
         MouseListener mouseListener = new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     String selectedItem
                             = (String) searchResults.getSelectedValue();
                     searchResults.setModel(listModel);
+                    linklist.setModel(listModel2);
                     model.addElement(selectedItem);
-                    //Cruft.info_box("selectedItem: "+selectedItem,
-                    //	       "FOokalaa");
+                    UICruft.info_box("selectedItem: "+selectedItem,
+                    	       "FOokalaa");
                     populate_view(selectedItem);
                 }
             }
         };
         searchResults.addMouseListener(mouseListener);
 
+        MouseListener mouseListener2 = new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    String selectedItem
+                            = (String) linklist.getSelectedValue();
+                    //searchResults.setModel(listModel);
+                    linklist.setModel(listModel2);
+                    model.addElement(selectedItem);
+                    UICruft.info_box("selectedItem: "+selectedItem,
+                    	       "FOokalaa");
+                    String urlpart = Cruft.extract_url(selectedItem);
+                    UICruft.info_box("URLI: " + urlpart, "INFO");
+                    //launch_url(selectedItem);
+                }
+            }
+        };
+        linklist.addMouseListener(mouseListener2);
+        
+        
+        
+        
+        
+        
+        
         factoryNewRSSApp();
         my_app.execute();
     }
 
+    private void launch_url(String urli_) {
+        Network.open_browser(urli_);
+    }
+    
+    
     private void populate_view(String url) {
         Stream stream = new Stream(url);
         stream.setup_content();
         String data = stream.get_HTTP_content();
-        fileViewer.setText(data);
+        listModel2 = new DefaultListModel();
+        feed_xml(data, url);
+        //fileViewer.setText(data);
     }
 
     public static void gui_hook() /* throws .. */ {
@@ -228,8 +279,8 @@ public class GUI extends JFrame implements ActionListener,
         gui_h.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private void feed_xml(String datat) {
-        UICruft.info_box("feed_xml", "Error: " + datat);
+    private void feed_xml(String datat, String urli) {
+        UICruft.info_box("feed_xml: " + datat, "Error");
         List<ngXMLElement> vals = null;
         try {
             vals = ngXML.do_parse(datat);
@@ -242,22 +293,35 @@ public class GUI extends JFrame implements ActionListener,
             return;
         }
         int len = vals.size();
-
+        UICruft.info_box("len: " + len, "tarkka");
         String t2[] = new String[len];
-
-        for (int i = 0; i < 1; i++) {
+ 
+        linklist.setModel(listModel2);
+ 
+        /// XXX bgran
+        for (int i = 0; i < len; i++) {
             ngXMLElement t = vals.get(i);
             String key = t.getKey();
             String val = t.getVal();
             t2[i] = key + " -> " + val + "\n";
-
-            listModel.addElement(key + " -> " + val + "\n");
-            UICruft.info_box("feed_xml: " + key + " " + val,
-                    "Prkl");
-
+            
+            //panedata += t2[i];
+            ///////////////linklist.addElement(key + " -> " + val + "\n");
+            //try {
+            //    doc.insertString(60, t2[i], null);
+            //} catch (BadLocationException e) {
+            //    UICruft.info_box("BadLocationException " + e.getMessage(), "ERR");
+            //}
+            listModel2.addElement(key + " -> " + val + "\n");
+            //UICruft.info_box("feed_xml: " + key + " " + val,
+            //        "Prkl");
+            
         }
+        //linklist = new JList(t2);
+        //fileViewer.setText(panedata);
         //searchResults.removeAll();
         searchResults.setModel(listModel);
+        //linklist.setModel(listModel2);
     }
 
     @Override
@@ -280,7 +344,10 @@ public class GUI extends JFrame implements ActionListener,
                 System.exit(0);
                 break;
             case "ClearList":
-                UICruft.info_box("Clears the feed list!", "Not implemented!");
+                //UICruft.info_box("Clears the feed list!", "Not implemented!");
+                file_locker.clean_streams();
+                delete_RSS_list();
+                
                 break;
             case "OpenHelp":
                 about_window();
@@ -298,7 +365,7 @@ public class GUI extends JFrame implements ActionListener,
         searchResults.setModel(listModel);
         String[] streams = file_locker.my_streams;
         //Cruft.info_box(""+streams.length, "HAKALAA");
-        for (int i = 0; i < streams.length; i++) {
+        for (int i = 0; i < streams.length-1; i++) {
             if (streams[i] == null) {
                 continue;
             }
@@ -308,6 +375,33 @@ public class GUI extends JFrame implements ActionListener,
             listModel.addElement(
                     streams[i]);
         }
+    }
+    public void refresh_link_list() {
+        listModel2 = new DefaultListModel();
+        linklist.setModel(listModel2);
+        String[] streams = file_locker.my_streams;
+        //Cruft.info_box(""+streams.length, "HAKALAA");
+        for (int i = 0; i < streams.length-1; i++) {
+            if (streams[i] == null) {
+                continue;
+            }
+            //Cruft.info_box(streams[i], "RSS_list");
+            Stream stream = new Stream(streams[i]);
+
+            listModel2.addElement(
+                    streams[i]);
+        }
+    }
+    
+    
+    public void delete_RSS_list() {
+        listModel = new DefaultListModel();
+        searchResults.setModel(listModel);
+        for (int i = 0; i<file_locker.my_streams.length-1; i++) {
+            //listModel.clear();
+            listModel.remove(i);
+        }
+        searchResults.repaint();
     }
 
     @Override
