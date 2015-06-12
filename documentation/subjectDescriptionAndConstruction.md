@@ -22,9 +22,9 @@ There's basically the following sections of the application:
 * File system interaction component (not implemented yet).
 
 The GUI component is the hardest part. It's written basically in pure swing, extending a JPanel in the beginning. It then has tree parts:
-** Menu bar for inserting feeds and clearing feed data.
-** The upper pane that shows the "subscribed" feeds.
-** The lower pane supports a JList of RSS feed entries.
+* Menu bar for inserting feeds and clearing feed data.
+* The upper pane that shows the "subscribed" feeds.
+* The lower pane supports a JList of RSS feed entries.
 
 The Network component is responsible to handle all network handling functionality. There's methods for fetching data by URL. The solution is behind a class called Stream. It's semantically the Stream data in usage for a single stream.
 
