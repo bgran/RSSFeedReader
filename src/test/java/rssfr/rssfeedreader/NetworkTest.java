@@ -6,6 +6,7 @@
 
 package rssfr.rssfeedreader;
 
+import Net.MalformedNetwork;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import org.junit.After;
@@ -15,7 +16,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import rssfr.rssfeedreader.Network;
+import Net.Network;
 
 /**
  *

@@ -1,4 +1,4 @@
-package rssfr.rssfeedreader;
+package Net;
 
 /**
  * The ErrorNetwork exception used by the Network class to signal error states.

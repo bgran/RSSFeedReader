@@ -1,4 +1,4 @@
-package rssfr.rssfeedreader;
+package Net;
 
 /**
  * This class is an exception to signal error conditions in the Network class.

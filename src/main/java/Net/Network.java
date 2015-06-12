@@ -1,7 +1,7 @@
 /**
  *
  */
-package rssfr.rssfeedreader;
+package Net;
 
 import java.awt.Desktop;
 import java.io.*;
@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import rssfr.GUI.UICruft;
 
-import rssfr.rssfeedreader.ErrorNetwork;
 
 /**
  * This class implements network related functionality.

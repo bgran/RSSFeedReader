@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import rssfr.rssfeedreader.Network;
+import Net.Network;
 import rssfr.GUI.GUI;
 import rssfr.rssfeedreader.Cruft.*;
 import rssfr.rssfeedreader.ngXML;
