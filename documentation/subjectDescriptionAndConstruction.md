@@ -1,11 +1,48 @@
-The RSS feed reader is a Java application utilizing basic Java structure and Swing classes for UI definition. The program is a RSS Feed Reader application, that fetches the Rich Site Summary, or Really Simple Syndication. The data fetced is a discrete XML document that contains frequently updated information, such as blogs, news headlines, audio, video. The RSS document is called informally a "feed".
+RSS Feed Reader
+===============
 
-RSS is XML markup language, that is a complete XML document.
+The RSS Feed Reader is a Java application for fetching and reading RSS feeds. The user interface is made with Java Swing classes to achieve a widely supportd UI definition. The program should work equally on any platform that has a Java runtime.
 
-The users for such an application is the web user who want's to stay up to date with current happenings on the Internet.
+The RSS is an acronym for Rich Site Summary or Really Simple Syndication. It can be used to used to fetch information about new blog entries, news items, new audio, video. The method is asyncrhonic. The RSS Feed Reader is responsible for fetching the XML data that represents the stream. The RSS document is called informally a "feed".
 
-The application fetches the desired feeds form the URL entered in the URL text field. Nothing is stored in any filesystem or similar. The URL is entered in a widget in the GUI section of the system. The request is pushed forward to the Network section. It then makes a HTTP connection to the feed provider, and fetches the current RSS feed. This data is forwarded to the ngXML XML parsing logic in the application, which splices and splits, joins, the XML data to a data structure that can be passed back to the GUI, which will show the new RSS feed in place.
+The RSS feed is XML markup language. It's a static file that contains entries. The entires are defined with the RSS standard. This version is based on the 0.9 version of the RSS specification.
 
-Error cases are handled  with exceptions. This is due to the Network or ngXML parts not having any reason to use UI logic.
+There's potentially nothing else to do with the application, than to fetch given RSS feeds upon user interaction. It's advicable to fetch new entries every now and then. The automatic updating of such stuff is a good idea, but that's outside the scope of this project.
 
-The nature of the application is highly difficult to do tests for. Artificial means of adding getters and setters my provide with more tests being applied, but is not done due to professional integrity of not making code any more harder to read than it already is.
+The transport channel is a TCP based HTTP(S) stream that is the XML document. The application needs a XML parsing framework. It's faily easy to parse the correctly structured RSS feed data. The XML handling code will reject broken document. There's basically the news item, and the URL to more information.
+
+
+RSS Feed Reader architecture
+----------------------------
+
+There's basically the following sections of the application:
+* GUI component, that handles all stuff related to the graphical user interface. This the biggest part of the code.
+* Network component handles the Network (HTTP) and Stream basic operations.
+* ngXML which parses the RSS feed data.
+* File system interaction component (not implemented yet).
+
+The GUI component is the hardest part. It's written basically in pure swing, extending a JPanel in the beginning. It then has tree parts:
+** Menu bar for inserting feeds and clearing feed data.
+** The upper pane that shows the "subscribed" feeds.
+** The lower pane supports a JList of RSS feed entries.
+
+The Network component is responsible to handle all network handling functionality. There's methods for fetching data by URL. The solution is behind a class called Stream. It's semantically the Stream data in usage for a single stream.
+
+ngXML is a relatively small piece of code that does the highly difficult parsing of the received data. The XML document is not a contxt free grammar, so bascially portable versions of the parser cannot be a DFA (Deterministic Finite Automata, or better known as regular expressions). This makes the ngXML very difficult to get working right.
+
+The file system component is for storing subscribed feeds, but it's not yet implemented yet.
+
+
+RSS Feed Reader operation
+-------------------------
+
+The roughs steps to getting a RSS Feed Reader up and running:
+* Instantite a RSSApp object, which is capable of executing an event receiving and dispatching mechanism.
+* There's then the GUI component loaded, and it's populated with the previously subscribed RSS Feeds.
+* Stop waiting for user input.
+* Enter a new stream.
+* Fetch the data for the stream, and store it in virtual memory.
+* iterate
+
+Since there's only synchronous events happening, the logic beneath is also synchronic. The user interaction is seriously difficult to automate. You would almost have to use tools like xnee to simulate some operation. The interfaces are highly specific to how the software would operate in real life terms, not like a toy program where the datastructures are redundant and the logic is based on preset modus operandi. It's highly difficult to test because of these issues automatically the software. When in real life software products there's different types of means of Quality Assurance.
+
