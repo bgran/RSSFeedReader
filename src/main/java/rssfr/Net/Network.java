@@ -1,7 +1,7 @@
 /**
  *
  */
-package Net;
+package rssfr.Net;
 
 import java.awt.Desktop;
 import java.io.*;

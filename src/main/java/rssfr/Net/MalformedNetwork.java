@@ -1,4 +1,4 @@
-package Net;
+package rssfr.Net;
 
 /**
  * This class is an exception to signal error conditions in the Network class.

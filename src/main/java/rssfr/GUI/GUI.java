@@ -55,10 +55,10 @@ import javax.swing.text.StyledDocument;
 
 import rssfr.rssfeedreader.Cruft.*;
 import rssfr.rssfeedreader.FileLocker;
-import Net.IOExcNetwork;
-import Net.MalformedNetwork;
-import Net.Network;
-import Net.Network;
+import rssfr.Net.IOExcNetwork;
+import rssfr.Net.MalformedNetwork;
+import rssfr.Net.Network;
+import rssfr.Net.Network;
 import rssfr.rssfeedreader.RSSApp;
 import rssfr.rssfeedreader.Stream;
 import rssfr.rssfeedreader.ngXML;

@@ -5,7 +5,7 @@
  */
 package rssfr.rssfeedreader;
 
-import Net.Network;
+import rssfr.Net.Network;
 import rssfr.GUI.UICruft;
 import java.util.List;
 

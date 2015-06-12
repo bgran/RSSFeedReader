@@ -1,4 +1,4 @@
-package Net;
+package rssfr.Net;
 
 /**
  * The ErrorNetwork exception used by the Network class to signal error states.

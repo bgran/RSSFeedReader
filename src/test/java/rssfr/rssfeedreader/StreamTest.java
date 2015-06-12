@@ -62,6 +62,10 @@ public class StreamTest {
             assertFalse(true);
         }
     }
+    
+
+    
+    
    /*@Test
     public void testSetupContent() {
         Stream st = new Stream("http://sulaco.havoc.fi/bgran/jl/rss.xml");
