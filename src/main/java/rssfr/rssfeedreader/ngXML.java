@@ -88,8 +88,8 @@ public class ngXML {
         try {
             tmp = ngXML.parse2(data);
         } catch (Exception e) {
-            UICruft.info_box("ngXML.parse2", "Error: " + e.getMessage());
-            //return null;
+            //UICruft.info_box("ngXML.parse2", "Error: " + e.getMessage());
+            return null;
         }
         return (tmp);
     }

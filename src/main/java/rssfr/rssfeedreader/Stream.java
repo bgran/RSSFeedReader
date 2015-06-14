@@ -76,7 +76,7 @@ public class Stream {
             this.netw.init_io_connection();
             return this.netw.network_get_content();
         } catch (Exception e) {
-            UICruft.info_box("Uhuhuh", rss_url);
+            UICruft.info_box("Error fetching content: " + e.getMessage(), "ERROR");
             return (null);
         }
     }

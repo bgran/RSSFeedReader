@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -63,6 +64,7 @@ import rssfr.rssfeedreader.RSSApp;
 import rssfr.rssfeedreader.Stream;
 import rssfr.rssfeedreader.ngXML;
 import rssfr.rssfeedreader.ngXMLElement;
+import rssfr.GUI.LowerJList;
 
 /**
  * GUI is the central class to handle graphics user interfaces.
@@ -103,7 +105,8 @@ public class GUI extends JFrame implements ActionListener,
     private String searchWord;
 
     JList searchResults;
-    JList linklist;
+    ColorJList linklist;
+    JButton delete_button;
 
     private JSplitPane splitPane;
     //private String[] links =
@@ -128,10 +131,13 @@ public class GUI extends JFrame implements ActionListener,
      * event handler.
      */
     public GUI() {
+	    file_locker = new FileLocker();
         this.network = new Network();
         //this.network.init_url_connection();
         //this.network.init_io_connection();
         file_locker = new FileLocker();
+	//refresh_RSS_list();
+	
 
         // JFramen tyyli ja koko
         this.setLayout(new FlowLayout());
@@ -167,6 +173,9 @@ public class GUI extends JFrame implements ActionListener,
         menuItem = getMenuItem("Clear list", "ClearList");
         menuItem.addActionListener(this);
         menu.add(menuItem);
+        menuItem = getMenuItem("Delete entry", "ClearItem");
+        menuItem.addActionListener(this);
+        menu.add(menuItem);
         menu.addSeparator();
 
         menuItem = getMenuItem("Exit", "Exit");
@@ -180,6 +189,17 @@ public class GUI extends JFrame implements ActionListener,
         menuBar.add(searchButton, BorderLayout.EAST);
 
         this.setJMenuBar(menuBar);
+
+        // KUHAKALA
+        search_button = new JButton("Remove stream");
+        search_button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int index = searchResults.getSelectedIndex();
+                System.out.println("Index selected: " + index);
+                String s = (String) searchResults.getSelectedValue();
+                System.out.println("Value selected: " + s);
+            }
+        });
 
         searchResults = new JList();
         searchResults.setBackground(Color.white);
@@ -195,13 +215,15 @@ public class GUI extends JFrame implements ActionListener,
          (int) ((double) W_HEIGHT / 2) - 30));
          fileViewer.setText("HUAKIIII");
          */
-        linklist = new JList();
-        linklist.setBackground(Color.green);
+        linklist = new ColorJList();
+        // XXX bgran //linklist.setBackground(Color.green);
+        linklist.setOpaque(false);
         linklist.setSize(new Dimension(W_WIDTH - 30,
                 (int) ((double) W_HEIGHT / 2) - 30));
         linklist.addListSelectionListener(this);
 
         panel2.add(new JScrollPane(searchResults), BorderLayout.NORTH);
+        panel2.add(search_button, BorderLayout.CENTER);
         panel2.add(new JScrollPane(linklist), BorderLayout.CENTER);
 
         this.add(panel2);
@@ -244,6 +266,8 @@ public class GUI extends JFrame implements ActionListener,
         };
         linklist.addMouseListener(mouseListener2);
 
+	refresh_RSS_list();
+
         factoryNewRSSApp();
         my_app.execute();
     }
@@ -264,8 +288,11 @@ public class GUI extends JFrame implements ActionListener,
      */
     private void populate_view(String url) {
         Stream stream = new Stream(url);
-        stream.setup_content();
+        //stream.setup_content();
         String data = stream.get_HTTP_content();
+        if (data == null) {
+            return;
+        }
         listModel2 = new DefaultListModel();
         feed_xml(data, url);
         //fileViewer.setText(data);
@@ -296,7 +323,7 @@ public class GUI extends JFrame implements ActionListener,
             return;
         }
         if (vals == null) {
-            UICruft.info_box("vals == null", "feed_xml");
+            UICruft.info_box("XML data malformed", "Error");
             return;
         }
         int len = vals.size();
@@ -312,16 +339,7 @@ public class GUI extends JFrame implements ActionListener,
             String val = t.getVal();
             t2[i] = key + " -> " + val + "\n";
 
-            //panedata += t2[i];
-            ///////////////linklist.addElement(key + " -> " + val + "\n");
-            //try {
-            //    doc.insertString(60, t2[i], null);
-            //} catch (BadLocationException e) {
-            //    UICruft.info_box("BadLocationException " + e.getMessage(), "ERR");
-            //}
             listModel2.addElement(key + " -> " + val + "\n");
-            //UICruft.info_box("feed_xml: " + key + " " + val,
-            //        "Prkl");
 
         }
         //linklist = new JList(t2);
@@ -356,13 +374,21 @@ public class GUI extends JFrame implements ActionListener,
                 delete_RSS_list();
 
                 break;
+            case "ClearItem":
+                int index = searchResults.getSelectedIndex();
+                System.out.println("Index selected: " + index);
+                String s = (String) searchResults.getSelectedValue();
+                System.out.println("Value selected: " + s);
+                delete_RSS_item(index);
+                break;
             case "OpenHelp":
                 about_window();
                 break;
         }
         this.repaint();
     }
-
+    
+    
     /**
      * Show an info box about the software.
      */
@@ -376,17 +402,19 @@ public class GUI extends JFrame implements ActionListener,
     public void refresh_RSS_list() {
         listModel = new DefaultListModel();
         searchResults.setModel(listModel);
-        String[] streams = file_locker.my_streams;
+        ArrayList<String> streams = file_locker.my_streams2;
         //Cruft.info_box(""+streams.length, "HAKALAA");
-        for (int i = 0; i < streams.length - 1; i++) {
-            if (streams[i] == null) {
-                continue;
-            }
+        for (int i = 0; i < streams.size(); i++) {
             //Cruft.info_box(streams[i], "RSS_list");
-            Stream stream = new Stream(streams[i]);
+            Stream stream = new Stream(streams.get(i));
 
+            /*JButton delb = new JButton("Remove");
+             delb.setActionCommand("Del:"+i);
+             delb.addActionListener(this);*/
             listModel.addElement(
-                    streams[i]);
+                    streams.get(i));
+	    //listModel.addElement(
+            //delb);
         }
     }
 
@@ -396,17 +424,14 @@ public class GUI extends JFrame implements ActionListener,
     public void refresh_link_list() {
         listModel2 = new DefaultListModel();
         linklist.setModel(listModel2);
-        String[] streams = file_locker.my_streams;
+        ArrayList<String> streams = file_locker.my_streams2;
         //Cruft.info_box(""+streams.length, "HAKALAA");
-        for (int i = 0; i < streams.length - 1; i++) {
-            if (streams[i] == null) {
-                continue;
-            }
+        for (int i = 0; i < streams.size(); i++) {
             //Cruft.info_box(streams[i], "RSS_list");
-            Stream stream = new Stream(streams[i]);
+            Stream stream = new Stream(streams.get(i));
 
             listModel2.addElement(
-                    streams[i]);
+                    streams.get(i));
         }
     }
 
@@ -416,13 +441,29 @@ public class GUI extends JFrame implements ActionListener,
     public void delete_RSS_list() {
         listModel = new DefaultListModel();
         searchResults.setModel(listModel);
-        for (int i = 0; i < file_locker.my_streams.length - 1; i++) {
-            //listModel.clear();
-            listModel.remove(i);
-        }
+        file_locker.clean_streams();
+        //for (int i = 0; i < file_locker.my_streams2. - 1; i++) {
+        //    //listModel.clear();
+        //    listModel.remove(i);
+        //}
         searchResults.repaint();
     }
 
+    public void delete_RSS_item(int idx) {
+        UICruft.info_box("delete_RSS_item: " + idx, "ERROR");
+        /*listModel = new DefaultListModel();
+        searchResults.setModel(listModel);
+        listModel.remove(idx);*/
+        DefaultListModel model = (DefaultListModel) searchResults.getModel();
+        int selected_index = searchResults.getSelectedIndex();
+        if (selected_index != -1) {
+            model.remove(selected_index);
+     }
+        file_locker.remove_index(selected_index);
+        
+    //searchResults.repaint();
+    }
+    
     @Override
     public void valueChanged(ListSelectionEvent e) {
         //Cruft.info_box("valueChanged: "+e.getSource(), "valueChanged");
