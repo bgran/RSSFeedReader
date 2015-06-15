@@ -47,7 +47,7 @@ public class FileLockerTest {
         FileLocker fl = new FileLocker();
         fl.add_stream("Fookala");
         fl.add_stream("Haukikala");
-        int len = fl.my_streams.length;
+        int len = fl.my_streams2.size();
         boolean truthval;
         if (len == 2) {
             truthval = true;

@@ -11,15 +11,14 @@ public class FileLocker {
 
     final int max_number_of_stream = 100;
 
-    //public String[] my_streams;
     public ArrayList<String> my_streams2;
 
+    /**
+     * The constructor tries to load from a "config.ini" file the previously
+     * used RSS feeds.
+     */
     public FileLocker() {
         my_streams2 = new ArrayList<String>();
-        //my_streams = new String[max_number_of_stream];
-        //for (int i = 0; i < max_number_of_stream; i++) {
-        //    my_streams[i] = null;
-        //}
         load_from_file();
     }
 
@@ -49,10 +48,18 @@ public class FileLocker {
         //}
     }
 
+    /**
+     * Remove a RSS entry from the upper pane, by index.
+     *
+     * @param idx The index of the RSS feed in the upper pane to remove.
+     */
     public void remove_index(int idx) {
         my_streams2.remove(idx);
     }
 
+    /**
+     * Tries to load from the "config.ini" file the previously used RSS feeds.
+     */
     private void load_from_file() {
         String data;
         try {
@@ -67,6 +74,9 @@ public class FileLocker {
         }
     }
 
+    /**
+     * Tries to load to the "config.ini" file the previously used RSS feeds.
+     */
     private void load_to_file() {
         try {
             Cruft.write_file_spec("config.ini", my_streams2);

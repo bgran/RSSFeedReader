@@ -64,7 +64,6 @@ import rssfr.rssfeedreader.RSSApp;
 import rssfr.rssfeedreader.Stream;
 import rssfr.rssfeedreader.ngXML;
 import rssfr.rssfeedreader.ngXMLElement;
-import rssfr.GUI.LowerJList;
 
 /**
  * GUI is the central class to handle graphics user interfaces.
@@ -105,7 +104,7 @@ public class GUI extends JFrame implements ActionListener,
     private String searchWord;
 
     JList searchResults;
-    ColorJList linklist;
+    JList linklist;
     JButton delete_button;
 
     private JSplitPane splitPane;
@@ -131,13 +130,12 @@ public class GUI extends JFrame implements ActionListener,
      * event handler.
      */
     public GUI() {
-	    file_locker = new FileLocker();
+        file_locker = new FileLocker();
         this.network = new Network();
         //this.network.init_url_connection();
         //this.network.init_io_connection();
         file_locker = new FileLocker();
 	//refresh_RSS_list();
-	
 
         // JFramen tyyli ja koko
         this.setLayout(new FlowLayout());
@@ -215,7 +213,7 @@ public class GUI extends JFrame implements ActionListener,
          (int) ((double) W_HEIGHT / 2) - 30));
          fileViewer.setText("HUAKIIII");
          */
-        linklist = new ColorJList();
+        linklist = new JList();
         // XXX bgran //linklist.setBackground(Color.green);
         linklist.setOpaque(false);
         linklist.setSize(new Dimension(W_WIDTH - 30,
@@ -240,8 +238,6 @@ public class GUI extends JFrame implements ActionListener,
                     searchResults.setModel(listModel);
                     linklist.setModel(listModel2);
                     model.addElement(selectedItem);
-                    //UICruft.info_box("selectedItem: "+selectedItem,
-                    //	       "FOokalaa");
                     populate_view(selectedItem);
                 }
             }
@@ -266,7 +262,7 @@ public class GUI extends JFrame implements ActionListener,
         };
         linklist.addMouseListener(mouseListener2);
 
-	refresh_RSS_list();
+        refresh_RSS_list();
 
         factoryNewRSSApp();
         my_app.execute();
@@ -387,8 +383,7 @@ public class GUI extends JFrame implements ActionListener,
         }
         this.repaint();
     }
-    
-    
+
     /**
      * Show an info box about the software.
      */
@@ -413,7 +408,7 @@ public class GUI extends JFrame implements ActionListener,
              delb.addActionListener(this);*/
             listModel.addElement(
                     streams.get(i));
-	    //listModel.addElement(
+            //listModel.addElement(
             //delb);
         }
     }
@@ -449,21 +444,25 @@ public class GUI extends JFrame implements ActionListener,
         searchResults.repaint();
     }
 
+    /**
+     * Deletes a single RSS feed from the upper pane.
+     * @param idx The index of the feed to remove.
+     */
     public void delete_RSS_item(int idx) {
         UICruft.info_box("delete_RSS_item: " + idx, "ERROR");
         /*listModel = new DefaultListModel();
-        searchResults.setModel(listModel);
-        listModel.remove(idx);*/
+         searchResults.setModel(listModel);
+         listModel.remove(idx);*/
         DefaultListModel model = (DefaultListModel) searchResults.getModel();
         int selected_index = searchResults.getSelectedIndex();
         if (selected_index != -1) {
             model.remove(selected_index);
-     }
+        }
         file_locker.remove_index(selected_index);
-        
-    //searchResults.repaint();
+
+        //searchResults.repaint();
     }
-    
+
     @Override
     public void valueChanged(ListSelectionEvent e) {
         //Cruft.info_box("valueChanged: "+e.getSource(), "valueChanged");

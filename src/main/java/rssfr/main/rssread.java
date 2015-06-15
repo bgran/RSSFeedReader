@@ -25,20 +25,11 @@ public class rssread extends GUI {
     JButton b;
 
     /**
-     * Description of main()
+     * main() method of the application.
      *
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
         GUI.gui_hook();
     }
-
-    /**
-     * The ctor setups the interface to the program.
-     */
-    public rssread() {
-        System.out.println("rssread initializing");
-        initUi();
-    }
-
 }

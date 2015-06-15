@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rssfr.GUI;
 
 import javax.swing.JOptionPane;
@@ -15,9 +10,9 @@ public class UICruft {
 
     /**
      * Pushes up an JOptionPane modal (?) dialog to report about happpenings in
-     * the appplication logic.
+     * the application logic.
      *
-     * @param info_msg string A messasge to show
+     * @param info_msg string A message to show
      * @param title string A title to show.
      */
     public static void info_box(String info_msg, String title) {

@@ -1,6 +1,10 @@
+rssfr/rssfeedreader/FileLockerTest.class
+rssfr/rssfeedreader/ngXLMTest.class
 rssfr/rssfeedreader/CruftTest.class
+rssfr/rssfeedreader/StreamTest.class
 FirstUnitTest.class
 rssfr/rssfeedreader/NetworkTest.class
 rssfr/rssfeedreader/GUITest.class
+rssfr/rssfeedreader/ngXMLElementTest.class
 rssfr/rssfeedreader/rssreaderTest.class
 ekatesti/SecondUnitTest.class

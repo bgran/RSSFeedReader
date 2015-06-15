@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import rssfr.GUI.UICruft;
 
-
 /**
  * This class implements network related functionality.
  *

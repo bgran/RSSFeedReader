@@ -2,13 +2,13 @@
 /home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/Cruft.java
 /home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/ngXMLElement.java
 /home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/GUI/GUI.java
-/home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/MalformedNetwork.java
-/home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/ErrorNetwork.java
+/home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/Net/ErrorNetwork.java
 /home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/ngXML.java
-/home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/IOExcNetwork.java
+/home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/Net/IOExcNetwork.java
 /home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/RSSApp.java
 /home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/main/rssread.java
-/home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/Network.java
 /home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/GUI/MyJPanel.java
+/home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/Net/Network.java
 /home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/Stream.java
 /home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/rssfeedreader/FileLocker.java
+/home/bgran/devkoulu/RSSFeedReader/src/main/java/rssfr/Net/MalformedNetwork.java

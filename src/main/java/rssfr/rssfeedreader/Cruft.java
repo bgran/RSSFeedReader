@@ -24,30 +24,50 @@ public class Cruft {
         String content = new String(Files.readAllBytes(Paths.get(file_name)));
         return (content);
     }
-	public static boolean write_file(String file_name, String [] data) throws IOException {
-		PrintWriter writer = new PrintWriter(file_name, "UTF-8");
-		for (int i = 0; i < data.length; i++) {
-			writer.println(data[i]);
-		}
-		writer.close();
-                return (true);
-	}
 
+    /**
+     * Writes an array of String's to a file very inefficiently.
+     *
+     * @param file_name The name of the file we want to write to.
+     * @param data The array of String's.
+     * @return boolean this is not used for anything.
+     * @throws IOException In case of errors.
+     */
+    public static boolean write_file(String file_name, String[] data) throws IOException {
+        PrintWriter writer = new PrintWriter(file_name, "UTF-8");
+        for (int i = 0; i < data.length; i++) {
+            writer.println(data[i]);
+        }
+        writer.close();
+        return (true);
+    }
 
-	public static boolean write_file_spec(String file_name,
-					      ArrayList<String> vals)
-                    throws IOException {
-		PrintWriter writer = new PrintWriter(file_name, "UTF-8");
-		for (int i=0; i<vals.size(); i++) {
-			writer.println(vals.get(i));
-		}
-		writer.close();
-		return (true);
-	}
+    /**
+     * Writes an ArrayList<String> to a file very inefficiently.
+     *
+     * @param file_name The name of the file we want to write to.
+     * @param data The ArrayList<String> to write to the file.
+     * @return boolean this is not used for anything.
+     * @throws IOException In case of errors.
+     */
+    public static boolean write_file_spec(String file_name,
+            ArrayList<String> vals)
+            throws IOException {
+        PrintWriter writer = new PrintWriter(file_name, "UTF-8");
+        for (int i = 0; i < vals.size(); i++) {
+            writer.println(vals.get(i));
+        }
+        writer.close();
+        return (true);
+    }
 
-
-
-    public static String extract_url (String entry) {
+    /**
+     * Split a String by the " -> " marker. Used as an ugly hack.
+     *
+     * @param entry the String to split.
+     * @return the second part, what's right of the marker.
+     */
+    public static String extract_url(String entry) {
         String[] parts = entry.split(" -> ");
         String part2 = parts[1];
         return (part2);

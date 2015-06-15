@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rssfr.rssfeedreader;
 
 import rssfr.Net.Network;
@@ -42,11 +37,6 @@ public class Stream {
         netw = new Network();
     }
 
-    /*public void refresh_content() {
-
-     String new_data = get_HTTP_content();
-
-     }*/
     /**
      * High level method to fetch data from an URL.
      */
