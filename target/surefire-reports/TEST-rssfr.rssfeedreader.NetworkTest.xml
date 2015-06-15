@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="rssfr.rssfeedreader.NetworkTest" time="5.276" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="rssfr.rssfeedreader.NetworkTest" time="5.2" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/home/bgran/jdk1.8.0_45/jre/lib/amd64"/>
@@ -61,7 +61,7 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="rssfr.rssfeedreader.NetworkTest" name="hello" time="0"/>
-  <testcase classname="rssfr.rssfeedreader.NetworkTest" name="testNetwork" time="0.265"/>
-  <testcase classname="rssfr.rssfeedreader.NetworkTest" name="testNetworkFalse" time="5.005"/>
+  <testcase classname="rssfr.rssfeedreader.NetworkTest" name="testNetwork" time="0.187"/>
   <testcase classname="rssfr.rssfeedreader.NetworkTest" name="testNetworkMalformed" time="0"/>
+  <testcase classname="rssfr.rssfeedreader.NetworkTest" name="testNetworkFalse" time="5.006"/>
 </testsuite>

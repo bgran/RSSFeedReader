@@ -189,13 +189,14 @@ public class GUI extends JFrame implements ActionListener,
         this.setJMenuBar(menuBar);
 
         // KUHAKALA
+	// XXX bgran
         search_button = new JButton("Remove stream");
         search_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int index = searchResults.getSelectedIndex();
-                System.out.println("Index selected: " + index);
+		//System.out.println("Index selected: " + index);
                 String s = (String) searchResults.getSelectedValue();
-                System.out.println("Value selected: " + s);
+		//System.out.println("Value selected: " + s);
             }
         });
 
@@ -347,7 +348,7 @@ public class GUI extends JFrame implements ActionListener,
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
+	//System.out.println(e.getActionCommand());
         switch (e.getActionCommand()) {
             case "GetRSS":
                 String search_word = searchField.getText();
@@ -372,9 +373,9 @@ public class GUI extends JFrame implements ActionListener,
                 break;
             case "ClearItem":
                 int index = searchResults.getSelectedIndex();
-                System.out.println("Index selected: " + index);
+		//System.out.println("Index selected: " + index);
                 String s = (String) searchResults.getSelectedValue();
-                System.out.println("Value selected: " + s);
+		//System.out.println("Value selected: " + s);
                 delete_RSS_item(index);
                 break;
             case "OpenHelp":
@@ -473,11 +474,11 @@ public class GUI extends JFrame implements ActionListener,
         } else {
             this.repaint();
             try {
-                System.out.println("Kuhakalaa");
+		//System.out.println("Kuhakalaa");
                 this.repaint();
             } catch (NullPointerException ex) {
             } finally {
-                System.out.println("Finally...");
+		//System.out.println("Finally...");
             }
             this.repaint();
         }
