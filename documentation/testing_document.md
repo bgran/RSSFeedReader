@@ -3,7 +3,7 @@ Testing document for the RSS Feed Reader
 
 The purpose of this document is to shed light on why testing of the application is a hard case.
 
-First off, the application in built from ground up with user interface design as the primary mean of operaton. The application is simply a wrapper on top of a fwe HTTP and parsing functionality. There's not that much internal state involved. The states that the application can be in are depicted:
+First off, the application is built from ground up with user interface design as the primary mean of operaton. The application is simply a wrapper on top of a fwe HTTP and parsing functionality. There's not that much internal state involved. The states that the application can be in are depicted:
 * Pristine state, where no feeds are subscribed.
 * Default state, only subscribed feed are shown, and no content is fetched.
 * Display state, where one feed is shown.
@@ -16,7 +16,7 @@ The following classes are tested in the rssfr.rssfeedreader:
 FileLocker.java
 ---------------
 
-Testing this is highly difficult, because it changes potentially state every tme you instantiate a ne FileLocker object.
+Testing this is highly difficult, because it changes potentially state every time you instantiate a new FileLocker object.
 
 Stream.java
 -----------
