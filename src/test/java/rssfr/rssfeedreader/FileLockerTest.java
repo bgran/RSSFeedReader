@@ -42,9 +42,10 @@ public class FileLockerTest {
     //
     // @Test
     // public void hello() {}
+
     @Test
     public void testFileLockerAddStream() {
-        FileLocker fl = new FileLocker();
+        FileLocker fl = new FileLocker(false);
         fl.add_stream("Fookala");
         fl.add_stream("Haukikala");
         int len = fl.my_streams2.size();
@@ -54,6 +55,6 @@ public class FileLockerTest {
         } else {
             truthval = false;
         }
-        assertFalse(truthval);
+        assertTrue(truthval);
     }
 }

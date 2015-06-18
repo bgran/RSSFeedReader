@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package rssfr.rssfeedreader;
+package rss.Net;
 
 import rssfr.Net.MalformedNetwork;
 import java.net.MalformedURLException;

@@ -130,11 +130,11 @@ public class GUI extends JFrame implements ActionListener,
      * event handler.
      */
     public GUI() {
-        file_locker = new FileLocker(true);
+        file_locker = new FileLocker();
         this.network = new Network();
         //this.network.init_url_connection();
         //this.network.init_io_connection();
-        //////////////////////////////////file_locker = new FileLocker();
+        file_locker = new FileLocker();
 	//refresh_RSS_list();
 
         // JFramen tyyli ja koko
@@ -485,7 +485,7 @@ public class GUI extends JFrame implements ActionListener,
     }
 
     /**
-     * initUIi sets upt he basic user interface.
+     * initUIi sets up the basic user interface.
      *
      */
     public void initUi() {

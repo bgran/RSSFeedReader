@@ -37,9 +37,11 @@
             <configuration>
                 <targetClasses>
                     <param>rssfr.rssfeedreader.*</param>
+                    <param>rssfr.Net.*</param>
                 </targetClasses>
                 <targetTests>
                     <param>rssfr.rssfeedreader.*</param>
+                    <param>rssfr.Net.*</param>
                 </targetTests>
             </configuration>
         </plugin>

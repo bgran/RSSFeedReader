@@ -17,9 +17,11 @@ public class FileLocker {
      * The constructor tries to load from a "config.ini" file the previously
      * used RSS feeds.
      */
-    public FileLocker() {
-        my_streams2 = new ArrayList<String>();
-        load_from_file();
+    public FileLocker(boolean init) {
+        	    my_streams2 = new ArrayList<String>();
+	    if (init) {
+		    load_from_file();
+	    }
     }
 
     /**

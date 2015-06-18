@@ -56,5 +56,14 @@ public class CruftTest {
         assertFalse(e);
         
     }
-    
+	@Test
+	public void testExtractUrl() {
+		String tester = "Foobar -> Spamni";
+		String result = Cruft.extract_url(tester);
+		if (result.equals("Spamni")) {
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+		}
+	}
 }
