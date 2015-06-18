@@ -38,3 +38,28 @@ Cruft.java
 
 Cruft contains utility functions declared static. Only the file reading functionality is tested.
 
+
+Not tested functionality
+========================
+
+There GUI package, and the Net packages are mainly not tested. This is due to volatility in the operation of them. The GUI is completely out of scope to test.
+
+Network.java
+------------
+
+This class is split into different semantically abstract parts of operation, into artificial parts that are tested. The problem is that the failure of the test case is largely dependant on the current network configuration. Some basic tests are done, like the Network.java is tested, but the rest of the classes in the rssfr.Net package are just exceptions for usage in error cases.
+
+
+Manually tested functionality
+=============================
+
+There's no clear method of functionlaity for testing things by hand, as such it wasn't required by the project. The usage of code quality improving assertation methods are not used at all. The reason was too much code changing too fast to keep the code up to date with asserts.
+
+
+Bugs encountered
+================
+
+The input testing of false data is done in Java libraries, and as such they raise exceptions based on what error is.
+
+
+EOF
