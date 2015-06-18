@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package rssfr.rssfeedreader;
 
 import rssfr.Net.MalformedNetwork;
@@ -23,24 +22,24 @@ import rssfr.Net.Network;
  * @author bgranlun
  */
 public class NetworkTest {
-    
+
     public NetworkTest() {
     }
     //@Rule
     public ExpectedException exception = ExpectedException.none();
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -49,8 +48,9 @@ public class NetworkTest {
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-    public void hello() {}
-    
+    public void hello() {
+    }
+
     @Test
     public void testNetwork() {
         String urli = new String("http://sulaco.havoc.fi/bgran/jl/assertti.html");
@@ -61,13 +61,14 @@ public class NetworkTest {
             netw.init_url_connection();
             netw.init_io_connection();
             result = netw.network_get_content();
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("getUrl failed");
         }
         //String result = "Salainen viesti";
         boolean e = result.equals("Salainen viesti");
         assertTrue(e);
     }
+
     @Test
     public void testNetworkFalse() {
         String urli = new String("http://devnull.local/asdf");
@@ -79,14 +80,15 @@ public class NetworkTest {
             netw.init_io_connection();
             result = netw.network_get_content();
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             //System.out.println("getUrl failed");
         }
         boolean e = result.equals("bogus");
         assertTrue(e);
     }
+
     @Test //(expected=MalformedNetwork.class)
-    public void testNetworkMalformed()  {
+    public void testNetworkMalformed() {
         //String urli = "http://sulaco.havoc.fi/bgran/jl/malformed.xml";
         //exception.expect(MalformedNetwork.class);
         boolean aok = false;
@@ -95,41 +97,42 @@ public class NetworkTest {
         netw.setUrlStr(urli);
         try {
             netw.init_url_connection();
-        } catch(MalformedNetwork e) {
+        } catch (MalformedNetwork e) {
             aok = true;
-        } catch(Throwable e) {
+        } catch (Throwable e) {
             System.out.println("EVIL");
-            
+
         }
         assertTrue(aok);
         //netw.init_url_connection();
         //netw.network_get_content();
     }
-	@Test
-	public void testSetterGetter() {
-		Network netw = new Network();
-		String input = "kala";
-		System.out.println("input: " + input);
-		netw.setUrlStr(input);
-		String output = netw.getUrlStr();
-		System.out.println("output: " + output);
-		if (output.equals(input)) {
-			assertTrue(true);
-		} else {
-			assertTrue(false);
-		}
-	}
 
-	@Test
-	public void testInitUrlConnection() {
-		Network netw = new Network();
-		netw.setUrlStr("sdfasdfdfgdfgsdfg");
-		try {
-			netw.init_url_connection();
-		} catch (MalformedNetwork e) {
-			assertTrue(true);
-			return;
-		}
-		assertTrue(false);
-	}
+    @Test
+    public void testSetterGetter() {
+        Network netw = new Network();
+        String input = "kala";
+        //System.out.println("input: " + input);
+        netw.setUrlStr(input);
+        String output = netw.getUrlStr();
+        //System.out.println("output: " + output);
+        if (output.equals(input)) {
+            assertTrue(true);
+        } else {
+            assertTrue(false);
+        }
+    }
+
+    @Test
+    public void testInitUrlConnection() {
+        Network netw = new Network();
+        netw.setUrlStr("sdfasdfdfgdfgsdfg");
+        try {
+            netw.init_url_connection();
+        } catch (MalformedNetwork e) {
+            assertTrue(true);
+            return;
+        }
+        assertTrue(false);
+    }
 }

@@ -4,6 +4,7 @@ rssfr/rssfeedreader/FileLocker.class
 rssfr/Net/MalformedNetwork.class
 rssfr/main/rssread.class
 rssfr/rssfeedreader/Cruft.class
+rssfr/GUI/GUI$3.class
 rssfr/rssfeedreader/RSSApp.class
 rssfr/rssfeedreader/ngXML.class
 rssfr/GUI/GUI.class

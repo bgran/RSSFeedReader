@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author bgran
  */
 public class StreamTest {
-    
+
     public StreamTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -52,7 +52,7 @@ public class StreamTest {
             assertFalse(true);
         }
     }
-    
+
     @Test
     public void testCtor() {
         Stream newstream = new Stream("Kuhakala");
@@ -62,19 +62,16 @@ public class StreamTest {
             assertFalse(true);
         }
     }
-    
 
-    
-    
-   /*@Test
-    public void testSetupContent() {
-        Stream st = new Stream("http://sulaco.havoc.fi/bgran/jl/rss.xml");
-        st.setup_content();
-        int len = st.vals.length;
-        if (len == 4) {
-            assertTrue(true);
-        } else {
-            assertFalse(true);
-        }
-    }*/
+    /*@Test
+     public void testSetupContent() {
+     Stream st = new Stream("http://sulaco.havoc.fi/bgran/jl/rss.xml");
+     st.setup_content();
+     int len = st.vals.length;
+     if (len == 4) {
+     assertTrue(true);
+     } else {
+     assertFalse(true);
+     }
+     }*/
 }

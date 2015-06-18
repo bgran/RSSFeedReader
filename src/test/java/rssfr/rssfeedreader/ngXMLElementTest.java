@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author bgran
  */
 public class ngXMLElementTest {
-    
+
     public ngXMLElementTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -45,14 +45,13 @@ public class ngXMLElementTest {
     @Test
     public void testElement() {
         ngXMLElement k = new ngXMLElement("foo", "bar");
-        if ((k.getKey().compareTo("foo")) == 0 &&
-                (k.getVal().compareTo("bar") == 0)) {
+        if ((k.getKey().compareTo("foo")) == 0
+                && (k.getVal().compareTo("bar") == 0)) {
             assertTrue(true);
         } else {
             assertTrue(false);
         }
-        
-    }
 
+    }
 
 }

@@ -135,7 +135,7 @@ public class GUI extends JFrame implements ActionListener,
         //this.network.init_url_connection();
         //this.network.init_io_connection();
         //////////////////////////////////file_locker = new FileLocker();
-	//refresh_RSS_list();
+        //refresh_RSS_list();
 
         // JFramen tyyli ja koko
         this.setLayout(new FlowLayout());
@@ -189,14 +189,14 @@ public class GUI extends JFrame implements ActionListener,
         this.setJMenuBar(menuBar);
 
         // KUHAKALA
-	// XXX bgran
+        // XXX bgran
         search_button = new JButton("Remove stream");
         search_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int index = searchResults.getSelectedIndex();
-		//System.out.println("Index selected: " + index);
+                //System.out.println("Index selected: " + index);
                 String s = (String) searchResults.getSelectedValue();
-		//System.out.println("Value selected: " + s);
+                //System.out.println("Value selected: " + s);
             }
         });
 
@@ -348,7 +348,7 @@ public class GUI extends JFrame implements ActionListener,
 
     @Override
     public void actionPerformed(ActionEvent e) {
-	//System.out.println(e.getActionCommand());
+        //System.out.println(e.getActionCommand());
         switch (e.getActionCommand()) {
             case "GetRSS":
                 String search_word = searchField.getText();
@@ -373,12 +373,12 @@ public class GUI extends JFrame implements ActionListener,
                 break;
             case "ClearItem":
                 int index = searchResults.getSelectedIndex();
-		if (index == -1) {
+                if (index == -1) {
                     break;
                 }
                 //System.out.println("Index selected: " + index);
                 String s = (String) searchResults.getSelectedValue();
-		//System.out.println("Value selected: " + s);
+                //System.out.println("Value selected: " + s);
                 //UICruft.info_box("index: " + index, "DEBUG");
                 delete_RSS_item(index);
                 break;
@@ -455,6 +455,7 @@ public class GUI extends JFrame implements ActionListener,
 
     /**
      * Deletes a single RSS feed from the upper pane.
+     *
      * @param idx The index of the feed to remove.
      */
     public void delete_RSS_item(int idx) {
@@ -482,11 +483,11 @@ public class GUI extends JFrame implements ActionListener,
         } else {
             this.repaint();
             try {
-		//System.out.println("Kuhakalaa");
+                //System.out.println("Kuhakalaa");
                 this.repaint();
             } catch (NullPointerException ex) {
             } finally {
-		//System.out.println("Finally...");
+                //System.out.println("Finally...");
             }
             this.repaint();
         }

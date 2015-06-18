@@ -31,12 +31,12 @@ public class rssread extends GUI {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-	    //try {
-		    GUI.gui_hook(); 
+        //try {
+        GUI.gui_hook();
 	    //} catch (Throwable e) {
-	//	    UICruft.info_box("Program failed: " + e.getMessage(),
-	//			   "Error");
-	//	    System.out.println("Program failed: " + e.getMessage());
-	////  }
+        //	    UICruft.info_box("Program failed: " + e.getMessage(),
+        //			   "Error");
+        //	    System.out.println("Program failed: " + e.getMessage());
+        ////  }
     }
 }

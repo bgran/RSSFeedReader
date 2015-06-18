@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author bgran
  */
 public class CruftTest {
-    
+
     public CruftTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -42,28 +42,28 @@ public class CruftTest {
     //
     // @Test
     // public void hello() {}
-    
     @Test
     public void testFileRead() {
         String file = new String("/etc/passwd");
         String result = "bogus";
         try {
             result = Cruft.read_file(file);
-        } catch(Exception e) {
+        } catch (Exception e) {
             //System.out.println("getUrl failed");
         }
         boolean e = result.equals("bogus");
         assertFalse(e);
-        
+
     }
-	@Test
-	public void testExtractUrl() {
-		String tester = "Foobar -> Spamni";
-		String result = Cruft.extract_url(tester);
-		if (result.equals("Spamni")) {
-			assertTrue(true);
-		} else {
-			assertTrue(false);
-		}
-	}
+
+    @Test
+    public void testExtractUrl() {
+        String tester = "Foobar -> Spamni";
+        String result = Cruft.extract_url(tester);
+        if (result.equals("Spamni")) {
+            assertTrue(true);
+        } else {
+            assertTrue(false);
+        }
+    }
 }

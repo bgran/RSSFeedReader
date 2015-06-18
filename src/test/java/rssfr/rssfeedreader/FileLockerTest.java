@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author bgran
  */
 public class FileLockerTest {
-    
+
     public FileLockerTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -42,7 +42,6 @@ public class FileLockerTest {
     //
     // @Test
     // public void hello() {}
-
     @Test
     public void testFileLockerAddStream() {
         FileLocker fl = new FileLocker(false);

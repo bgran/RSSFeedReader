@@ -43,10 +43,10 @@ public class Cruft {
     }
 
     /**
-     * Writes an ArrayList<String> to a file very inefficiently.
+     * Writes an ArrayList to a file very inefficiently.
      *
      * @param file_name The name of the file we want to write to.
-     * @param data The ArrayList<String> to write to the file.
+     * @param vals The ArrayList to write to the file.
      * @return boolean this is not used for anything.
      * @throws IOException In case of errors.
      */
@@ -62,7 +62,7 @@ public class Cruft {
     }
 
     /**
-     * Split a String by the " -> " marker. Used as an ugly hack.
+     * Split a String by the " -&gt; " marker. Used as an ugly hack.
      *
      * @param entry the String to split.
      * @return the second part, what's right of the marker.

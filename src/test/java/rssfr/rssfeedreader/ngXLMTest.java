@@ -18,22 +18,22 @@ import static org.junit.Assert.*;
  * @author bgran
  */
 public class ngXLMTest {
-    
+
     public ngXLMTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -48,7 +48,7 @@ public class ngXLMTest {
         String data = "<mydoc></mydoc>";
         try {
             ngXML.do_parse(data);
-        } catch(Exception e) {
+        } catch (Exception e) {
             assertTrue(false);
         }
         assertTrue(true);
