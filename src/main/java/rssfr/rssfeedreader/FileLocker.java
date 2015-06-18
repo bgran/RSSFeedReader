@@ -17,9 +17,9 @@ public class FileLocker {
      * The constructor tries to load from a "config.ini" file the previously
      * used RSS feeds.
      */
-    public FileLocker(boolean init) {
-        	    my_streams2 = new ArrayList<String>();
-	    if (init) {
+    public FileLocker(boolean init_) {
+            my_streams2 = new ArrayList<String>();
+	    if (init_) {
 		    load_from_file();
 	    }
     }
@@ -48,6 +48,7 @@ public class FileLocker {
         //for (int i = 0; i < max_number_of_stream; i++) {
         //    my_streams[i] = null;
         //}
+        load_to_file();
     }
 
     /**
@@ -57,6 +58,7 @@ public class FileLocker {
      */
     public void remove_index(int idx) {
         my_streams2.remove(idx);
+        load_to_file();
     }
 
     /**
@@ -72,6 +74,9 @@ public class FileLocker {
         }
         String[] entries = data.split("\n");
         for (int i = 0; i < entries.length; i++) {
+            if (entries[i].isEmpty()) {
+                continue;
+            }
             add_stream(entries[i]);
         }
     }

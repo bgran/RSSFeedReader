@@ -119,4 +119,17 @@ public class NetworkTest {
 			assertTrue(false);
 		}
 	}
+
+	@Test
+	public void testInitUrlConnection() {
+		Network netw = new Network();
+		netw.setUrlStr("sdfasdfdfgdfgsdfg");
+		try {
+			netw.init_url_connection();
+		} catch (MalformedNetwork e) {
+			assertTrue(true);
+			return;
+		}
+		assertTrue(false);
+	}
 }

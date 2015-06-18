@@ -12,6 +12,7 @@ import rssfr.rssfeedreader.Cruft.*;
 import rssfr.rssfeedreader.ngXML;
 
 import javax.swing.*;
+import rssfr.GUI.UICruft;
 
 /**
  * Description of rssread Main class for application. bgran1337
@@ -30,6 +31,12 @@ public class rssread extends GUI {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        GUI.gui_hook();
+	    //try {
+		    GUI.gui_hook(); 
+	    //} catch (Throwable e) {
+	//	    UICruft.info_box("Program failed: " + e.getMessage(),
+	//			   "Error");
+	//	    System.out.println("Program failed: " + e.getMessage());
+	////  }
     }
 }

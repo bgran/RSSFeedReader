@@ -165,9 +165,9 @@ public class GUI extends JFrame implements ActionListener,
                 "The only menu in this program that has menu items");
         menuBar.add(menu);
 
-        menuItem = getMenuItem("Refresh feeds", "RefreshFeeds");
-        menuItem.addActionListener(this);
-        menu.add(menuItem);
+        //menuItem = getMenuItem("Refresh feeds", "RefreshFeeds");
+        //menuItem.addActionListener(this);
+        //menu.add(menuItem);
         menuItem = getMenuItem("Clear list", "ClearList");
         menuItem.addActionListener(this);
         menu.add(menuItem);
@@ -256,7 +256,7 @@ public class GUI extends JFrame implements ActionListener,
                     //UICruft.info_box("selectedItem: "+selectedItem,
                     // 	       "FOokalaa");
                     String urlpart = Cruft.extract_url(selectedItem);
-                    UICruft.info_box("URLI: " + urlpart, "INFO");
+                    //UICruft.info_box("URLI: " + urlpart, "INFO");
                     launch_url(urlpart);
                 }
             }
@@ -373,9 +373,13 @@ public class GUI extends JFrame implements ActionListener,
                 break;
             case "ClearItem":
                 int index = searchResults.getSelectedIndex();
-		//System.out.println("Index selected: " + index);
+		if (index == -1) {
+                    break;
+                }
+                //System.out.println("Index selected: " + index);
                 String s = (String) searchResults.getSelectedValue();
 		//System.out.println("Value selected: " + s);
+                //UICruft.info_box("index: " + index, "DEBUG");
                 delete_RSS_item(index);
                 break;
             case "OpenHelp":
@@ -399,6 +403,10 @@ public class GUI extends JFrame implements ActionListener,
         listModel = new DefaultListModel();
         searchResults.setModel(listModel);
         ArrayList<String> streams = file_locker.my_streams2;
+        if (streams.size() == 0) {
+            listModel.addElement("Insert a new one");
+            return;
+        }
         //Cruft.info_box(""+streams.length, "HAKALAA");
         for (int i = 0; i < streams.size(); i++) {
             //Cruft.info_box(streams[i], "RSS_list");
@@ -450,7 +458,7 @@ public class GUI extends JFrame implements ActionListener,
      * @param idx The index of the feed to remove.
      */
     public void delete_RSS_item(int idx) {
-        UICruft.info_box("delete_RSS_item: " + idx, "ERROR");
+        //UICruft.info_box("delete_RSS_item: " + idx, "ERROR");
         /*listModel = new DefaultListModel();
          searchResults.setModel(listModel);
          listModel.remove(idx);*/

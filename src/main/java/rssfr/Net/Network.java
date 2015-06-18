@@ -41,9 +41,9 @@ public class Network {
      */
     public void init_url_connection() throws MalformedNetwork {
         try {
-            this.url = new URL(this.urli);
-        } catch (MalformedURLException e) {
-            throw new MalformedNetwork("");
+		this.url = new URL(this.urli);
+	} catch (MalformedURLException e) {
+		throw new MalformedNetwork("Err: " + e.getMessage());
         }
     }
 
